@@ -18,7 +18,7 @@ No database, no SaaS, no lock-in. Just files in a git repo you control.
 npx emos-vault init
 ```
 
-Then open it with your agent and run `/configure`.
+Then open it with your AI agent and ask it to configure the project.
 
 ---
 
@@ -45,9 +45,10 @@ across apps. emOS keeps it in one traversable Markdown vault where:
    ```
    This lays down the framework, an empty content skeleton, the `.claude`
    symlink for agent discovery, and starter `config.yaml` / `CONFIG.md`.
-2. **Configure** — open the vault with Claude Code (or your agent) and run
-   `/configure`: it prompts for your name, team, people, and which tools you use,
-   and writes the config for you. (Prefer manual? Edit `.agents/config.yaml`.)
+2. **Configure** — open the vault with Claude Code (or your agent) and ask it to
+   configure the project (this runs the `configure` skill). It prompts for your
+   name, team, people, and which tools you use — all optional — and writes the
+   config for you. (Prefer manual? Edit `.agents/config.yaml`.)
 3. **Use it** — capture into `00-inbox/`, start a project with `/project-new`,
    prep a 1-on-1 with `/1on1 <name>`, plan your week with `/weekly-new`.
 

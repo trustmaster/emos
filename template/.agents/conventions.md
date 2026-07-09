@@ -66,6 +66,10 @@ Used in project and incident frontmatter:
 | `P2`  | Important but not urgent                     |
 | `P3`  | Nice to have / backlog                       |
 
+## Current Quarter
+
+The current quarter is **derived from today's date**, never stored in config. Compute it as `YYYY-QN` where `N = ceil(month / 3)` (Jan–Mar → Q1, Apr–Jun → Q2, Jul–Sep → Q3, Oct–Dec → Q4). Use this whenever a workflow needs "this quarter" (e.g. OKR filenames `YYYY-QN.md`, "this quarter" priorities).
+
 ## YAML Frontmatter
 
 Every file **must** have a `type:` field. Every file **should** have a `status:` field. Dates use ISO 8601 (`YYYY-MM-DD`). Lists use YAML arrays. Person references use slugs.

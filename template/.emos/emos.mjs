@@ -219,14 +219,17 @@ function cmdInit(argv) {
   for (const d of dirs) fs.mkdirSync(path.join(ROOT, d), { recursive: true });
   syncFrom(src, true, label);
   linkClaude();
-  // Seed the two personalization files from their examples (user fills them / runs /configure).
+  // Seed the two personalization files from their examples (the agent fills them
+  // via the configure skill, or the user edits them by hand).
   const seed = (example, real, note) => {
     const ex = path.join(ROOT, example), rp = path.join(ROOT, real);
     if (!fs.existsSync(rp) && fs.existsSync(ex)) { fs.copyFileSync(ex, rp); console.log("  " + note); }
   };
   seed(".agents/config.example.yaml", ".agents/config.yaml", "seeded .agents/config.yaml from example");
   seed("CONFIG.example.md", "CONFIG.md", "seeded CONFIG.md from example");
-  console.log("  done. Next: run /configure (or edit .agents/config.yaml), then start capturing.");
+  console.log("");
+  console.log("  Done. Next: open your AI agent and ask it to configure the project");
+  console.log("  (or edit .agents/config.yaml directly), then start capturing.");
 }
 
 const HELP = `emOS framework tool — operates on the current directory

@@ -14,7 +14,8 @@ owner:
   slug: "yourname"        # lowercase, matches your profile filename
 
 # Person slug mappings — resolve @Mentions in prose to profile filenames.
-# Add one line per direct report / collaborator.
+# Optional. One line per direct report / collaborator (the configure skill
+# generates these from a list of names). Add more as your team grows.
 people:
   "@Alex": alex
   "@Sam": sam
@@ -43,12 +44,12 @@ paths:
   reports: "10-reports"
   templates: "_templates"
 
-# Organizational context
+# Organizational context. Everything here is optional — leave "" if unknown.
+# (The current quarter is derived from today's date, not stored here.)
 context:
   team: "Your Team"
   tribe: "Your Department"      # or group / org unit; leave "" if not applicable
   company: "Your Company"
-  current_quarter: "2026-Q1"
 
 # External system base URLs (no credentials — links only).
 # Leave any you don't use as "".
@@ -104,9 +105,10 @@ slack:
     incidents: "#incidents"
     team: "#team"
 
-# Report generation (used by manager-report)
+# Report generation (used by manager-report). Optional — leave "" to use the
+# default title "Weekly Async Report - {team}". Only set this to override it.
 report:
-  async_title: "Weekly Async — Your Team"
+  async_title: ""
 
 # Agent behavior
 agent:

@@ -65,7 +65,7 @@ Templates and skills use `{{token}}` placeholders that you resolve from
 | `{{owner_slug}}` | `owner.slug` |
 | `{{owner_name}}` | `owner.name` |
 | `{{team}}` | `context.team` |
-| `{{report_async_title}}` | `report.async_title` |
+| `{{report_async_title}}` | `report.async_title`, or `Weekly Async Report - {{team}}` if blank |
 | `{{jira_browse_url}}` | `external.jira` |
 
 ---
