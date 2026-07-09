@@ -1,0 +1,19 @@
+# Node
+node_modules/
+npm-debug.log*
+
+# npm pack output
+*.tgz
+
+# emOS updater sidecars
+*.emos-new
+
+# OS / editor cruft
+.DS_Store
+*.tmp
+
+# Secrets — never commit
+.env
+**/.env
+*.key
+*.token

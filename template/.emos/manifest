@@ -1,0 +1,33 @@
+# emOS framework manifest
+#
+# Each non-comment, non-blank line is a framework path or glob, relative to the
+# vault root. `emos update` overwrites these from the upstream source; every
+# other path in your vault is user-owned and never touched.
+#
+# Matching: `*` and `**` match any characters (including `/`). Patterns are
+# matched against paths relative to the vault root.
+#
+# Lines beginning with `-` are PROTECTED exceptions: never written even when
+# they fall under an included pattern above. This is how your real config stays
+# yours while the rest of `.agents/` is framework-managed.
+#
+# `.claude/` is a symlink to `.agents/` (for Claude Code discovery) — it is not
+# walked directly, so all agent-tooling paths below are given under `.agents/`.
+
+AGENTS.md
+CONFIG.example.md
+emos
+emos.cmd
+.agents/conventions.md
+.agents/config.example.yaml
+.agents/skills/**
+.agents/integrations/**
+.agents/commands/**
+_templates/**
+docs/**
+.emos/emos.mjs
+.emos/package.json
+.emos/manifest
+
+- .agents/config.yaml
+- .agents/settings.local.json

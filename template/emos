@@ -1,0 +1,5 @@
+#!/bin/sh
+# emOS launcher — thin forwarder to the updater in .emos/.
+# Lets you run `./emos <cmd>` instead of `node .emos/emos.mjs <cmd>`.
+# You are not meant to edit anything in .emos/ — see docs/ and .agents/config.yaml.
+exec node "$(dirname "$0")/.emos/emos.mjs" "$@"

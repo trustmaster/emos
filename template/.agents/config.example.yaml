@@ -1,0 +1,126 @@
+version: 1
+vault_root: "."
+
+# ─────────────────────────────────────────────────────────────────────────
+# emOS configuration. Copy this file to `.agents/config.yaml` and fill it in.
+# `config.yaml` is yours (never overwritten by `emos update`); this example
+# file is framework-owned and WILL be overwritten on update.
+# ─────────────────────────────────────────────────────────────────────────
+
+# Owner — the person this vault belongs to.
+# Used as the default for owner/manager/interviewer/decider fields.
+owner:
+  name: "Your Name"
+  slug: "yourname"        # lowercase, matches your profile filename
+
+# Person slug mappings — resolve @Mentions in prose to profile filenames.
+# Add one line per direct report / collaborator.
+people:
+  "@Alex": alex
+  "@Sam": sam
+
+# Directory paths (relative to vault_root). Defaults match the shipped layout.
+paths:
+  inbox: "00-inbox"
+  weekly: "01-weekly"
+  profiles: "02-people/profiles"
+  one_on_ones: "02-people/one-on-ones"
+  reviews: "02-people/reviews"
+  projects: "03-projects"                # projects live flat: 03-projects/{slug}/
+  projects_archive: "03-projects/archive"
+  decisions: "04-decisions"
+  incidents: "05-incidents"
+  hiring_positions: "06-hiring/positions"
+  hiring_interviews: "06-hiring/interviews"
+  hiring_rubrics: "06-hiring/rubrics"
+  strategy: "07-strategy"
+  okrs: "07-strategy/okrs"
+  roadmaps: "07-strategy/roadmaps"
+  meetings: "08-meetings"
+  knowledge_management: "09-knowledge/management"
+  knowledge_coaching: "09-knowledge/coaching"
+  knowledge_tech: "09-knowledge/tech"
+  reports: "10-reports"
+  templates: "_templates"
+
+# Organizational context
+context:
+  team: "Your Team"
+  tribe: "Your Department"      # or group / org unit; leave "" if not applicable
+  company: "Your Company"
+  current_quarter: "2026-Q1"
+
+# External system base URLs (no credentials — links only).
+# Leave any you don't use as "".
+external:
+  jira: "https://your-org.atlassian.net/browse"
+  confluence: "https://your-org.atlassian.net/wiki"
+  slack: "https://your-org.slack.com"
+  github: "https://github.com/your-org"
+  tableau: ""
+  opsgenie: ""
+  gdrive: "https://drive.google.com"
+
+# ─────────────────────────────────────────────────────────────────────────
+# Tool selection — which provider fills each capability.
+# Workflows resolve the active provider here, then follow its adapter in
+# .agents/integrations/{provider}.md (which names the skill(s) that implement it).
+# Set a capability to `none` if you don't use it — dependent skills degrade
+# gracefully instead of failing. To add a new tool (e.g. Linear, Notion,
+# Mattermost), see docs/integrations.md — you add a skill + adapter, you never
+# edit the core workflows.
+# ─────────────────────────────────────────────────────────────────────────
+tools:
+  issue_tracker: jira         # shipped: jira · none
+  wiki:          confluence    # shipped: confluence · none
+  chat:          slack         # shipped: slack · none
+  docs:          gws           # shipped: gws · none
+
+# Jira integration — provider for `tools.issue_tracker: jira`
+# (used by create-jira-ticket, jira-sync; adapter: .agents/integrations/jira.md). Optional.
+jira:
+  project_key: "PROJ"
+  cloud_id: ""                 # Atlassian cloud UUID (from getAccessibleAtlassianResources)
+  custom_fields:
+    epic_link: ""              # e.g. customfield_10014
+    story_points: ""           # e.g. customfield_10026
+
+# Confluence integration — provider for `tools.wiki: confluence`
+# (used by confluence-load, confluence-save; adapter: .agents/integrations/confluence.md). Optional.
+confluence:
+  cloud_id: ""
+  space_key: "SPACE"
+  root_page_id: ""             # page ID the vault's pages are nested under
+  root_title: "Team Home"
+  parents:                     # top-level sections under the root page
+    projects: "Projects"
+    meetings: "Meeting Notes"
+
+# Slack integration — provider for `tools.chat: slack`
+# (used by slack-capture; adapter: .agents/integrations/slack.md). Optional.
+slack:
+  workspace_url: "https://your-org.slack.com"
+  channels:
+    incidents: "#incidents"
+    team: "#team"
+
+# Report generation (used by manager-report)
+report:
+  async_title: "Weekly Async — Your Team"
+
+# Agent behavior
+agent:
+  # When creating files, always use these conventions
+  date_format: "YYYY-MM-DD"
+  week_format: "YYYY-Www"
+  slug_style: "kebab-case"    # lowercase, hyphens between words
+
+  # Dashboard files to rebuild after content changes
+  dashboards:
+    - "01-weekly/_index.md"
+    - "02-people/_index.md"
+    - "03-projects/_index.md"
+    - "04-decisions/_index.md"
+    - "05-incidents/_index.md"
+    - "06-hiring/_index.md"
+    - "07-strategy/_index.md"

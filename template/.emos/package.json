@@ -1,0 +1,17 @@
+{
+  "name": "emos",
+  "version": "0.1.0",
+  "description": "emOS — Engineering Manager Operating System: framework init/update tool",
+  "type": "module",
+  "bin": {
+    "emos": "emos.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "emos.mjs",
+    "manifest"
+  ],
+  "license": "MIT"
+}

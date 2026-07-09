@@ -1,0 +1,98 @@
+version: 1
+vault_root: "."
+
+# ─── Example config for the fictional "Payments Platform" team at Acme Inc. ───
+# Everything here is invented. Copy patterns, not values.
+
+owner:
+  name: "Alex Rivera"
+  slug: "alex"
+
+people:
+  "@Sam": sam
+  "@Priya": priya
+  "@Marco": marco
+  "@Dana": dana
+
+paths:
+  inbox: "00-inbox"
+  weekly: "01-weekly"
+  profiles: "02-people/profiles"
+  one_on_ones: "02-people/one-on-ones"
+  reviews: "02-people/reviews"
+  projects: "03-projects"
+  projects_archive: "03-projects/archive"
+  decisions: "04-decisions"
+  incidents: "05-incidents"
+  hiring_positions: "06-hiring/positions"
+  hiring_interviews: "06-hiring/interviews"
+  hiring_rubrics: "06-hiring/rubrics"
+  strategy: "07-strategy"
+  okrs: "07-strategy/okrs"
+  roadmaps: "07-strategy/roadmaps"
+  meetings: "08-meetings"
+  knowledge_management: "09-knowledge/management"
+  knowledge_coaching: "09-knowledge/coaching"
+  knowledge_tech: "09-knowledge/tech"
+  reports: "10-reports"
+  templates: "_templates"
+
+context:
+  team: "Payments Platform"
+  tribe: "Commerce"
+  company: "Acme Inc."
+  current_quarter: "2026-Q2"
+
+# Which provider fills each capability (see docs/integrations.md).
+tools:
+  issue_tracker: jira
+  wiki:          confluence
+  chat:          slack
+  docs:          gws
+
+external:
+  jira: "https://acme.atlassian.net/browse"
+  confluence: "https://acme.atlassian.net/wiki"
+  slack: "https://acme.slack.com"
+  github: "https://github.com/acme"
+  tableau: ""
+  opsgenie: ""
+  gdrive: "https://drive.google.com"
+
+jira:
+  project_key: "PAY"
+  cloud_id: "example-cloud-id-0000"
+  custom_fields:
+    epic_link: "customfield_10014"
+    story_points: "customfield_10026"
+
+confluence:
+  cloud_id: "example-cloud-id-0000"
+  space_key: "PAY"
+  root_page_id: "100001"
+  root_title: "Payments Platform"
+  parents:
+    projects: "Projects"
+    meetings: "Meeting Notes"
+
+slack:
+  workspace_url: "https://acme.slack.com"
+  channels:
+    incidents: "#pay-incidents"
+    team: "#pay-team"
+
+report:
+  async_title: "Weekly Async — Payments Platform"
+
+agent:
+  date_format: "YYYY-MM-DD"
+  week_format: "YYYY-Www"
+  slug_style: "kebab-case"
+  dashboards:
+    - "01-weekly/_index.md"
+    - "02-people/_index.md"
+    - "03-projects/_index.md"
+    - "04-decisions/_index.md"
+    - "05-incidents/_index.md"
+    - "06-hiring/_index.md"
+    - "07-strategy/_index.md"

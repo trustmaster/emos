@@ -1,0 +1,38 @@
+{
+  "name": "emos",
+  "version": "0.1.0",
+  "description": "Engineering Manager Operating System — a Markdown-based, agent-friendly vault for running an engineering team. Scaffold and update via the CLI.",
+  "type": "module",
+  "bin": {
+    "emos": "bin/emos.mjs"
+  },
+  "files": [
+    "bin/",
+    "template/",
+    "NOTICE"
+  ],
+  "keywords": [
+    "engineering-management",
+    "knowledge-base",
+    "markdown",
+    "obsidian",
+    "claude",
+    "ai-agent",
+    "notes",
+    "productivity",
+    "second-brain"
+  ],
+  "author": "Vladimir Sibirov",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/trustmaster/emos#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trustmaster/emos.git"
+  },
+  "bugs": {
+    "url": "https://github.com/trustmaster/emos/issues"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
