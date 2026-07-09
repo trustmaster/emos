@@ -78,6 +78,130 @@ docs/         Guides (this repo)
 Each section has a generated `_index.md` dashboard the agent rebuilds with
 `/rebuild`.
 
+## Typical workflows
+
+You drive emOS by just **talking to your agent in plain language**. Each skill
+carries a description of when to use it, so the agent picks the right one from
+what you ask — no command syntax to memorize. The examples below are phrased the
+way you'd actually type them.
+
+> Every skill can be triggered three ways, and you can mix them freely:
+> - **Natural language** — "prep my 1-on-1 with Priya" (works in any harness)
+> - **Slash command** — `/1on1 Priya` (where your harness supports them)
+> - **Just ask** — describe the outcome and let the agent choose the skill
+>
+> The names in the [Skills & capabilities](#skills--capabilities) tables are the
+> slash aliases; the plain-English trigger is always available.
+
+**Start the day**
+
+> *"What's on my plate today?"*
+
+A terse briefing — open TODOs, blockers, active incidents, upcoming deadlines,
+and today's 1-on-1s.
+
+**Run the week**
+
+> *"Start this week's plan."* — opens the week's file, carrying open TODOs forward
+> *"Capture this: vendor renewal is due end of Q3."* — timestamped note into today's inbox
+> *"Triage my inbox."* — the agent classifies each item and proposes where it goes, then waits for your OK
+> *"Let's close out the week."* — tallies completion, scans the week, writes the retro
+
+**Prep and run a 1-on-1**
+
+> *"Prep my 1-on-1 with Priya."*
+
+Builds a prep file from her profile, last session's carry-over, recent weekly
+mentions, and project context. Take notes live; next week the agent pulls the
+unresolved threads forward automatically.
+
+**Spin up and work a project**
+
+> *"Start a new project for GCP cost optimization."* — folder + hub doc + a follow-up TODO this week
+> *"Pull everything about the GCP cost project into one place."* — full context loaded into the session
+> *"Start meeting notes for the GCP planning sync."*
+> *"Record a decision: we're adopting spot instances for batch workers."* — writes the next ADR
+> *"Refresh the project's Related section."* — regenerates the hub rollup after you've tagged content
+
+**Handle an incident**
+
+> *"We've got checkout 500s spiking in eu-west-1 — start a post-mortem."*
+
+Creates the incident file with an inferred severity and a follow-up TODO in the
+current week.
+
+**Report up and out**
+
+> *"Draft my weekly manager update."* — synthesizes the week's 1-on-1s, projects, and incidents
+> *"Pull the current sprint into a report."* — Jira sprint snapshot grouped by status
+> *"Help me prepare Priya's performance review."* — gathers real evidence, invents no ratings
+
+**Pull in outside context** (when the matching tool is enabled)
+
+> *"Save this Slack thread: <url>"* — classified note into the inbox
+> *"Import this Confluence page: <url>"* — imported, classified, and routed
+> *"Publish this file to Confluence."*
+
+## Skills & capabilities
+
+Ask for any of these in plain language — the agent matches your request to the
+right skill. The `/<name>` column is the slash alias where your harness supports
+it. Provider skills (marked ⚙︎) only activate when the matching tool is enabled
+in your config.
+
+**Daily & weekly cadence**
+
+| Skill | What it does |
+|-------|--------------|
+| `/morning` | Terse briefing — TODOs, blockers, active incidents, upcoming deadlines, today's 1-on-1s |
+| `/weekly-new` | Start the week's plan, carrying open TODOs and follow-ups forward |
+| `/weekly-review` | Close out the week — completion tally + retrospective |
+| `/capture` | Quick, no-analysis note into today's inbox |
+| `/inbox` | Triage inbox items — classify and route, with confirmation before moving |
+
+**People**
+
+| Skill | What it does |
+|-------|--------------|
+| `/1on1 <name>` | Build a 1-on-1 prep file from profile, carry-over, recent mentions, and projects |
+| `/perf-review <name>` | Draft a review narrative from real evidence — no invented ratings |
+
+**Projects, decisions & incidents**
+
+| Skill | What it does |
+|-------|--------------|
+| `/project-new <title>` | Create a project folder + hub doc + follow-up TODO |
+| `/project <slug>` | Load a project's full context into one session |
+| `/project-sync [slug]` | Regenerate the hub's auto Related rollup |
+| `/meeting-new <title>` | Dated meeting note linked to a project |
+| `/decision <title>` | New ADR with the next sequential number |
+| `/incident <desc>` | Post-mortem file with inferred severity and a follow-up TODO |
+
+**Reporting**
+
+| Skill | What it does |
+|-------|--------------|
+| `/manager-report` | Weekly async status, synthesized from weeklies, 1-on-1s, projects, incidents |
+| `/jira-sync` ⚙︎ | Pull the current sprint into a status-grouped report |
+
+**Integrations** (capability-gated ⚙︎)
+
+| Skill | Capability | What it does |
+|-------|-----------|--------------|
+| `/create-jira-ticket` | `issue_tracker` | Create a Jira ticket via MCP |
+| `/jira-sync` | `issue_tracker` | Snapshot the active sprint into a report |
+| `/confluence-load`, `/confluence-save` | `wiki` | Import from / publish to Confluence |
+| `/slack-capture` | `chat` | Save a Slack thread as a classified note |
+| Google Workspace (`gws-*`) | `docs` | Gmail, Calendar, Drive, Docs, Sheets, Slides |
+
+**Vault maintenance**
+
+| Skill | What it does |
+|-------|--------------|
+| `/configure` | Interactive setup/update of owner, team, people, and tools (don't hand-edit YAML) |
+| `/rebuild` | Regenerate all `_index.md` dashboards |
+| `/emos-update` | Check for and apply framework updates |
+
 ## Projects as hubs
 
 emOS is filed by *type* (meetings, decisions, people…) but work happens by

@@ -1,3 +1,8 @@
+---
+name: create-jira-ticket
+description: Create a new Jira ticket in your workspace following the project's standard format — gathers the details, shows a draft for confirmation, then creates it via MCP. Use when the user wants to file, open, or create a Jira ticket or issue. Optionally pass the ticket summary as args.
+---
+
 # Create JIRA Ticket Skill
 
 > **Provider skill** for the `issue_tracker` capability (`jira`) — the `create_issue` operation. Active when `config.yaml` → `tools.issue_tracker: jira`. Adapter: [.agents/integrations/jira.md](../../integrations/jira.md).
