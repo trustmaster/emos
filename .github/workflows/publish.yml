@@ -16,14 +16,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Node 24 bundles a stable npm >= 11.5.1, which Trusted Publishing (OIDC)
+      # requires. Do NOT `npm install -g npm@latest` — it can pull a broken/
+      # pre-release npm whose bundled `sigstore` fails to load during provenance
+      # (npm/cli#9722). The bundled npm is the reliable choice.
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
           registry-url: https://registry.npmjs.org
-
-      - name: Upgrade npm (Trusted Publishing needs >= 11.5.1)
-        run: npm install -g npm@latest
 
       - name: Verify tag matches package.json version
         run: |
