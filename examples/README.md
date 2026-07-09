@@ -21,5 +21,5 @@ or credentials.
 ## Running it live
 
 This folder is for **reading**. To use emOS for real, scaffold a fresh vault
-elsewhere with `npx emos init` and start capturing — don't build on top of this
+elsewhere with `npx emos-vault init` and start capturing — don't build on top of this
 demo. The framework itself lives in [`../template/`](../template/).

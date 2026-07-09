@@ -1,13 +1,12 @@
 {
-  "name": "emos",
+  "name": "emos-vault",
   "version": "0.1.0",
   "description": "Engineering Manager Operating System — a Markdown-based, agent-friendly vault for running an engineering team. Scaffold and update via the CLI.",
   "type": "module",
   "bin": {
-    "emos": "bin/emos.mjs"
+    "emos": "template/.emos/emos.mjs"
   },
   "files": [
-    "bin/",
     "template/",
     "NOTICE"
   ],

@@ -15,7 +15,7 @@ No database, no SaaS, no lock-in. Just files in a git repo you control.
 
 ```bash
 # Scaffold a fresh vault in an empty directory
-npx emos init
+npx emos-vault init
 ```
 
 Then open it with your agent and run `/configure`.
@@ -41,7 +41,7 @@ across apps. emOS keeps it in one traversable Markdown vault where:
 1. **Scaffold** an empty directory:
    ```bash
    mkdir my-vault && cd my-vault
-   npx emos init
+   npx emos-vault init
    ```
    This lays down the framework, an empty content skeleton, the `.claude`
    symlink for agent discovery, and starter `config.yaml` / `CONFIG.md`.
@@ -117,11 +117,14 @@ update) from **your content** (never touched). The boundary is declared in
 `.emos/manifest`. Keep your vault in your own git repo and pull improvements:
 
 ```bash
-./emos update --source <this-repo-git-url>   # or: npx emos update
+npx emos-vault update    # pull the latest published release into this vault
+
+# or track a specific source (git ref, fork, or local clone):
+./emos update --source <git-url-or-path>
 ```
 
-Locally-edited framework files are preserved as `<file>.emos-new` for you to
-merge, never clobbered.
+Run either from inside your vault. Locally-edited framework files are preserved
+as `<file>.emos-new` for you to merge, never clobbered.
 
 > **Windows note:** agent discovery uses a `.claude → .agents` symlink. On
 > Windows, enable Developer Mode or `git config core.symlinks true`. If symlinks

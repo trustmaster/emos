@@ -3,7 +3,7 @@
  * emOS framework tool — init / update / check / baseline.
  *
  * Cross-platform (macOS / Linux / Windows) Node CLI, zero runtime dependencies.
- * Distribute via npx:  npx emos <command>
+ * Published npm package: emos-vault. Command: emos (bootstrap via `npx emos-vault`).
  *
  * Operates on the CURRENT WORKING DIRECTORY (the vault). The ownership boundary
  * lives in `.emos/manifest`: framework-owned paths are overwritten from an
@@ -12,11 +12,11 @@
  * a locally-edited framework file is detected and preserved (written alongside
  * as `<file>.emos-new`) instead of being clobbered.
  *
- * Usage:
- *   npx emos init     [--source <dir|git-url>]   # scaffold a fresh vault in the CWD
- *   npx emos check    [--source <dir|git-url>]   # dry-run: show what update would do
- *   npx emos update   [--source <dir|git-url>]   # apply framework updates
- *   npx emos baseline                            # record current framework hashes (no copy)
+ * Usage (command is `emos`; first run via `npx emos-vault`):
+ *   emos init     [--source <dir|git-url>]   # scaffold a fresh vault in the CWD
+ *   emos check    [--source <dir|git-url>]   # dry-run: show what update would do
+ *   emos update   [--source <dir|git-url>]   # apply framework updates
+ *   emos baseline                            # record current framework hashes (no copy)
  *
  * --source may be omitted when the tool ships bundled with a `template/` dir
  * (the published-package model); otherwise it is required for check/update/init.
@@ -27,8 +27,10 @@ import os from "node:os";
 import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 
-// Directory of THIS script (used only to locate a bundled template/ in the
-// published package). The vault we operate on is always the CWD.
+// Directory of THIS script. This file ships at template/.emos/emos.mjs and the
+// npm package's `bin` points straight at it — so SCRIPT_DIR/.. is the bundled
+// framework root used as the default init/update source. The vault we operate on
+// is always the CWD.
 const SCRIPT_DIR = path.dirname(new URL(import.meta.url).pathname);
 const ROOT = process.env.EMOS_ROOT || process.cwd();
 const VERSION_FILE = path.join(ROOT, ".emos", "version");
@@ -101,9 +103,13 @@ function writeRecorded(map, sourceLabel) {
 let TMP_SRC = null;
 function resolveSource(src) {
   if (!src) {
-    const bundled = path.join(SCRIPT_DIR, "..", "template");
-    if (fs.existsSync(path.join(bundled, ".emos", "manifest"))) return bundled;
-    die("missing --source <dir|git-url> (and no bundled template found)");
+    // Bundled framework root = SCRIPT_DIR/.. (this file ships at .emos/emos.mjs
+    // inside the package's template/). The equality guard stops a vault from
+    // trying to update from itself when run as ./emos with no --source.
+    const bundled = path.join(SCRIPT_DIR, "..");
+    if (fs.existsSync(path.join(bundled, ".emos", "manifest")) &&
+        path.resolve(bundled) !== path.resolve(ROOT)) return bundled;
+    die("missing --source <dir|git-url> — run via `npx emos-vault` for the bundled framework, or pass --source");
   }
   if (/^(https?:\/\/|git@|git:)/.test(src) || src.endsWith(".git")) {
     TMP_SRC = fs.mkdtempSync(path.join(os.tmpdir(), "emos-src-"));
@@ -224,10 +230,10 @@ function cmdInit(argv) {
 }
 
 const HELP = `emOS framework tool — operates on the current directory
-  npx emos init     [--source <dir|git-url>]   scaffold a fresh vault in the CWD
-  npx emos check    [--source <dir|git-url>]   dry-run: show what update would do
-  npx emos update   [--source <dir|git-url>]   apply framework updates
-  npx emos baseline                            record current framework hashes (no copy)`;
+  emos init     [--source <dir|git-url>]   scaffold a fresh vault in the CWD
+  emos check    [--source <dir|git-url>]   dry-run: show what update would do
+  emos update   [--source <dir|git-url>]   apply framework updates
+  emos baseline                            record current framework hashes (no copy)`;
 
 try {
   const [cmd, ...argv] = process.argv.slice(2);

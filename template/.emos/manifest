@@ -26,7 +26,6 @@ emos.cmd
 _templates/**
 docs/**
 .emos/emos.mjs
-.emos/package.json
 .emos/manifest
 
 - .agents/config.yaml

@@ -6,16 +6,18 @@ that keep it simple, portable, and tool-agnostic are the most welcome.
 ## Repo layout
 
 ```
-bin/emos.mjs      The CLI (init / check / update / baseline). Zero dependencies.
-template/         The framework that gets scaffolded into a vault via `emos init`.
-                  This is where skills, adapters, templates, and docs actually live.
-examples/         A fictional demo vault for exploration. No real data.
-docs/             Human-facing guides (integrations, authoring skills).
+template/                The framework scaffolded into a vault via `emos init`.
+                         Skills, adapters, templates, docs, and the CLI all live here.
+template/.emos/emos.mjs  The CLI (init / check / update / baseline), zero deps.
+                         The npm `bin` points straight at this file — it's the
+                         single source of truth, also scaffolded into each vault.
+examples/                A fictional demo vault for exploration. No real data.
+docs/                    (Inside template/) human-facing guides.
 ```
 
 **Important:** the framework lives in `template/`. Edit skills, templates,
-adapters, `AGENTS.md`, and `conventions.md` under `template/`, not at the repo
-root. The root `README.md`, `CONTRIBUTING.md`, and `LICENSE` are repo metadata.
+adapters, `AGENTS.md`, `conventions.md`, and the CLI under `template/`, not at the
+repo root. The root `README.md`, `CONTRIBUTING.md`, and `LICENSE` are repo metadata.
 
 ## Local development
 
@@ -23,9 +25,9 @@ Test the CLI against a throwaway vault:
 
 ```bash
 mkdir /tmp/emos-test && cd /tmp/emos-test
-node /path/to/repo/bin/emos.mjs init          # uses the bundled template/
+node /path/to/repo/template/.emos/emos.mjs init          # uses the bundled framework
 # make a change in template/, then:
-node /path/to/repo/bin/emos.mjs check --source /path/to/repo/template
+node /path/to/repo/template/.emos/emos.mjs check --source /path/to/repo/template
 ```
 
 `emos init`/`check`/`update` operate on the **current working directory**. There
