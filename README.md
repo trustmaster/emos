@@ -1,17 +1,20 @@
-# emOS — Engineering Manager Operating System
+# 🗂️ emOS — Engineering Manager Operating System
 
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
-A Markdown-based operating system for engineering managers — optimized for both
-human use (Obsidian, VS Code, any editor) and AI-agent use (Claude Code, or any
-LLM assistant). Your team, projects, decisions, incidents, 1-on-1s, and weekly
-planning live as plain `.md` files you own, with an agent that knows the
-conventions and does the filing.
+A Markdown-based operating system for engineering managers, technical leads, directors, and individual contributors. Optimized for both human use (Obsidian, VS Code, any editor) and AI-agent use (Claude Code, Codex, OpenCode, or any LLM assistant). Your team, projects, decisions, incidents, 1-on-1s, and weekly planning live as plain `.md` files you own, with an agent that knows the conventions and does the filing.
+
+emOS combines powerful approaches:
+
+- Structured knowledge base that you can grow day by day
+- Turns any AI agent into your personal assistant
+- Extensible via skills and tools
+- Connects everything into an integrated operating system
 
 No database, no SaaS, no lock-in. Just files in a git repo you control.
 
 ```bash
-# scaffold a fresh vault in an empty directory
+# Scaffold a fresh vault in an empty directory
 npx emos init
 ```
 
