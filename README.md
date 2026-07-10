@@ -1,8 +1,8 @@
-# 🗂️ emOS — Engineering Manager Operating System
+# 🗂️ emOS — Everyone's Markdown Organizer System
 
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
-A Markdown-based operating system for engineering managers, technical leads, directors, and individual contributors. Optimized for both human use (Obsidian, VS Code, any editor) and AI-agent use (Claude Code, Codex, OpenCode, or any LLM assistant). Your team, projects, decisions, incidents, 1-on-1s, and weekly planning live as plain `.md` files you own, with an agent that knows the conventions and does the filing.
+A Markdown-based operating system for engineering managers, technical leads, directors, and individual contributors. It's just plain `.md` files, so it works with whatever you already use — any Markdown editor (Obsidian, VS Code, Cursor, Zed, …) for humans, and any agentic coding harness (Claude Code, Codex, OpenCode, Cursor, Kimi Code, …) for the AI side. Your team, projects, decisions, incidents, 1-on-1s, and weekly planning live as files you own, with an agent that knows the conventions and does the filing.
 
 emOS combines powerful approaches:
 
@@ -45,8 +45,9 @@ across apps. emOS keeps it in one traversable Markdown vault where:
    ```
    This lays down the framework, an empty content skeleton, the `.claude`
    symlink for agent discovery, and starter `config.yaml` / `CONFIG.md`.
-2. **Configure** — open the vault with Claude Code (or your agent) and ask it to
-   configure the project (this runs the `configure` skill). It prompts for your
+2. **Configure** — open the vault with your coding agent (Claude Code, OpenCode,
+   Codex, or any harness that reads `AGENTS.md`) and ask it to configure the
+   project (this runs the `configure` skill). It prompts for your
    name, team, people, and which tools you use — all optional — and writes the
    config for you. (Prefer manual? Edit `.agents/config.yaml`.)
 3. **Use it** — capture into `00-inbox/`, start a project with `/project-new`,
@@ -71,12 +72,31 @@ Want to see it populated first? Browse [`examples/`](examples/) — a fictional
 10-reports/   Recurring reports
 _templates/   File templates
 docs/         Guides (this repo)
-.agents/      Config, conventions, skills, integration adapters
+.agents/      Config, conventions, skills, integration adapters, role packs
 .emos/        Updater machinery (you don't edit this)
 ```
 
 Each section has a generated `_index.md` dashboard the agent rebuilds with
 `/rebuild`.
+
+## Works for your role
+
+emOS isn't just for engineering managers. One config field —
+`.agents/config.yaml` → `owner.role` — selects a **role pack** that tunes
+vocabulary, performance-review dimensions, the weekly status-report format, and
+your default 1-on-1 framing. The folders are the same for everyone; only the
+language and emphasis change.
+
+| Role | What shifts |
+|------|-------------|
+| `em` (default) | Direct reports, team-health async, downward coaching 1-on-1s |
+| `ic` | Self-review brag-doc, weekly *snippets*, upward 1-on-1s with your manager |
+| `pm` | PRDs & launches, product-status update for stakeholders, roadmap/OKR focus |
+| `director` | Portfolio of teams, program rollups, 1-on-1s with managers & skip-levels |
+
+Set it via `/configure` (or edit the field), and switch anytime. A person's
+`relation:` (`report`/`manager`/`peer`/`stakeholder`) refines framing per person.
+Add your own role in a few lines — see **[docs/roles.md](docs/roles.md)**.
 
 ## Typical workflows
 
@@ -259,6 +279,7 @@ as `<file>.emos-new` for you to merge, never clobbered.
 ## Extending
 
 - **Add a tool:** [docs/integrations.md](docs/integrations.md)
+- **Change or add a role:** [docs/roles.md](docs/roles.md)
 - **Write a skill:** [docs/authoring-skills.md](docs/authoring-skills.md)
 - **Conventions:** `.agents/conventions.md`
 - **Agent entry point:** `AGENTS.md`
@@ -266,7 +287,12 @@ as `<file>.emos-new` for you to merge, never clobbered.
 ## Requirements
 
 - Node.js ≥ 18 (for the `emos` CLI). No other runtime dependencies.
-- An editor (Obsidian recommended) and/or an AI agent (Claude Code) to drive it.
+- **Any Markdown editor** — Obsidian, VS Code, Cursor, Zed, or whatever you like —
+  and/or **any agentic harness** to drive it: Claude Code, Codex, OpenCode,
+  Cursor, Kimi Code, etc. Agents discover the vault via `AGENTS.md` and the
+  Agent Skills (`SKILL.md`) format (with a `.claude → .agents` symlink for Claude
+  Code; Codex reads `.agents/skills/` natively). No tool is required, nothing is
+  locked in.
 
 ## Contributing
 

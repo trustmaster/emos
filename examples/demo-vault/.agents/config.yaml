@@ -7,6 +7,7 @@ vault_root: "."
 owner:
   name: "Alex Rivera"
   slug: "alex"
+  role: em                # em | ic | pm | director — selects .agents/roles/{role}.md
 
 people:
   "@Sam": sam

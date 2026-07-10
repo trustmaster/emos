@@ -8,7 +8,11 @@ team: "{{team}}"
 start_date: YYYY-MM-DD
 contract: permanent
 status: active
-manager: "{{owner_slug}}"
+relation: report        # report | manager | peer | stakeholder | skip
+                        # your relationship to this person (from the owner's POV)
+manager: "{{owner_slug}}"   # who they report to; keep for relation: report, else clear
+# skill_will / growth_areas apply when relation: report (you coach this person).
+# Leave blank for manager / peer / stakeholder profiles.
 skill_will:
   skill: medium
   will: high
@@ -21,6 +25,10 @@ links:
   github: null
   linkedin: null
 ---
+
+<!-- Career Goals / Strengths / Growth Areas are coaching sections — most useful
+     for relation: report. For a manager, peer, or stakeholder, keep only the
+     sections that fit (e.g. Current Focus, Key Observations). -->
 
 ## Current Focus
 

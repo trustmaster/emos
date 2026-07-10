@@ -1,6 +1,9 @@
 # emOS Agent Guide
 
-You are operating inside **emOS** — the Engineering Manager Operating System.
+You are operating inside **emOS** — *Everyone's Markdown Organizer System* (engineering
+managers still feel right at home). One vault, many roles: `.agents/config.yaml` →
+`owner.role` (`em` · `ic` · `pm` · `director`) selects a role pack that tunes vocabulary and
+emphasis — see the **Roles** section below.
 
 Read `.agents/config.yaml` first to orient yourself. It defines who the vault
 belongs to (`owner:`), the team/org context (`context:`), the people map
@@ -46,6 +49,28 @@ CONFIG.md         optional personal intro from the owner, prose (not framework-m
 
 ---
 
+## Roles
+
+emOS serves engineering managers, ICs, product managers, and directors from one framework.
+`.agents/config.yaml` → `owner.role` (`em` · `ic` · `pm` · `director`, default `em`) selects
+a **role pack** at `.agents/roles/{role}.md`.
+
+When running a **role-sensitive skill** (`1on1`, `perf-review`, `manager-report`, `morning`,
+`weekly-review`, `configure`, `rebuild`):
+
+1. Read `config.owner.role` (default `em` if absent).
+2. Open the pack at `.agents/roles/{role}.md`.
+3. Resolve the pack's **vocabulary tokens** (see the Config Substitution table) and follow
+   its **skill notes** for framing, review dimensions, report format, and the default 1-on-1
+   relationship.
+
+The **folder taxonomy is the same for every role** — packs change vocabulary and emphasis,
+never folder locations. A person's `relation:` (`report` · `manager` · `peer` · `stakeholder`
+· `skip`, from their profile) refines framing per person; absent ⇒ the pack's
+`{{oneonone_default_relation}}`. Full guide: [docs/roles.md](docs/roles.md).
+
+---
+
 ## Person Reference Resolution
 
 Resolve `@Mentions` using `.agents/config.yaml` → `people:` map. Each entry maps
@@ -65,8 +90,19 @@ Templates and skills use `{{token}}` placeholders that you resolve from
 | `{{owner_slug}}` | `owner.slug` |
 | `{{owner_name}}` | `owner.name` |
 | `{{team}}` | `context.team` |
-| `{{report_async_title}}` | `report.async_title`, or `Weekly Async Report - {{team}}` if blank |
+| `{{report_async_title}}` | `report.async_title`, or `{{role_report_title}}` if blank |
 | `{{jira_browse_url}}` | `external.jira` |
+
+Role tokens are resolved from the active role pack (`.agents/roles/{owner.role}.md`, default
+`em`) — see the **Roles** section:
+
+| Token | Source (active role pack) |
+|-------|---------------------------|
+| `{{role_report_slug}}` | report filename suffix, e.g. `manager-async` (em), `snippets` (ic) |
+| `{{role_report_title}}` | status-report H1 title |
+| `{{review_dimensions}}` | competency dimensions for `perf-review` |
+| `{{oneonone_default_relation}}` | default `relation:` when a person's profile has none |
+| `{{status_report_audience}}` | who the status report addresses |
 
 ---
 

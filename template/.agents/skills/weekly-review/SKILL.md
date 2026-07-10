@@ -11,7 +11,7 @@ Run the weekly review for the current week.
    - Completed tasks (`- [x]`)
    - Open tasks (`- [ ]`)
    - Tasks with `#delegate`, `#blocked`, `#follow-up`
-3. Scan all 1-on-1 files created this week (02-people/one-on-ones/*/YYYY-MM-DD.md matching this week's dates). Collect any unresolved action items.
+3. Scan all 1-on-1 files created this week (02-people/one-on-ones/*/YYYY-MM-DD.md matching this week's dates). Collect any unresolved action items. *(Skips gracefully for roles that hold few or no 1-on-1s.)*
 4. Check project folders in 03-projects/ (excluding `archive/`) — note any that slipped their target date or changed status this week.
 5. Check 05-incidents/ — note any incidents opened or status-changed this week.
 6. Update the current weekly file:

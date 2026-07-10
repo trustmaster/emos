@@ -22,6 +22,7 @@ emos.cmd
 .agents/config.example.yaml
 .agents/skills/**
 .agents/integrations/**
+.agents/roles/**
 .agents/commands/**
 _templates/**
 docs/**

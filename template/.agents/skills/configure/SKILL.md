@@ -20,23 +20,33 @@ and coordinates; authentication is handled by the MCP servers / CLIs themselves.
 - If `.agents/config.yaml` does **not** exist, this is first-time setup: copy
   `.agents/config.example.yaml` to `.agents/config.yaml` as the starting point.
 - If it exists, this is an edit: read current values and offer each as the
-  default. If args names a section (`owner`, `context`, `people`, `tools`,
+  default. If args names a section (`owner`, `role`, `context`, `people`, `tools`,
   `integrations`, `report`), jump straight to it.
 
-## Step 1 — Identity & context (all optional)
+## Step 1 — Identity, role & context (all optional)
 
 Ask, offering current values as defaults:
 - **Owner**: `name`. Derive `slug` automatically (lowercase, kebab-case) — don't
   ask for it separately.
+- **Role**: `owner.role` — one of `em` (engineering manager, default), `ic`
+  (individual contributor), `pm` (product manager), `director`. This selects the
+  role pack at `.agents/roles/{role}.md`, which tunes vocabulary, review
+  dimensions, and the status-report format. Read the chosen pack's "Who this is
+  for" line back to confirm the fit. Default to `em` if skipped.
 - **Context**: `team`, `tribe` (dept/org unit), `company`.
 
 Do **not** ask about the current quarter — it's derived from today's date.
 
 ## Step 2 — People (optional)
 
-Ask for the user's direct reports / close collaborators as a **single
-comma-separated list of names** — e.g. `Alex, Sam Rivera, Jordan`. Don't make the
-user think about slugs or `@mentions`.
+Tailor the prompt to `owner.role` — ask for the people that role actually tracks:
+- **em** — your direct reports (plus your manager and close collaborators).
+- **ic** — your manager, close collaborators, mentors.
+- **pm** — your stakeholders and eng/design/data partners.
+- **director** — the managers who report to you, your skip-levels, peer directors.
+
+Collect them as a **single comma-separated list of names** — e.g. `Alex, Sam
+Rivera, Jordan`. Don't make the user think about slugs or `@mentions`.
 
 For each name, generate the mapping yourself:
 - Key: `@FirstName` (first token of the name).
@@ -44,8 +54,11 @@ For each name, generate the mapping yourself:
 - If two names collide on `@FirstName`, disambiguate the later one with a last
   initial (`@SamR`).
 
-Write these under `people:` in the config. Show the generated mapping so the user
-can eyeball it. Skipping is fine — they can re-run this later as people join.
+Write these under `people:` in the config (the flat `@Mention: slug` map is the
+same for every role). Show the generated mapping so the user can eyeball it. When
+a profile is later created for someone, set its `relation:` (`report` · `manager`
+· `peer` · `stakeholder` · `skip`) — default to the role pack's default relation.
+Skipping is fine — they can re-run this later as people join.
 
 ## Step 3 — Tools (capabilities, optional)
 
@@ -83,8 +96,8 @@ the Atlassian MCP") so the user knows what else must be in place.
 
 Leave these at their defaults unless the user explicitly asks to change them:
 
-- `report.async_title` — defaults to `Weekly Async Report - {team}`. Only set it
-  to override that title.
+- `report.async_title` — overrides the status-report title. If blank it defaults
+  to the active role pack's `{{role_report_title}}` (em → `Weekly Async Report - {team}`).
 - `paths:`, `agent:`, `agent.dashboards` — only touch when relocating sections.
 
 ## Step 6 — Write

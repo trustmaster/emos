@@ -1,19 +1,22 @@
 ---
 type: one-on-one
 person: "slug"
+relation: report        # report | manager | peer | stakeholder | skip
 date: YYYY-MM-DD
 mood: null
 topics: []
 follow_ups_from: null
 ---
 
-## Check-in
+## Context
 
-How are they doing? Energy level, workload, anything on their mind.
+<!-- Filled at prep: project + weekly-scan findings, what to know going in.
+     Framing follows `relation:` — report → coaching signals; manager → what to
+     raise / decisions to confirm; peer/stakeholder → dependencies & alignment. -->
 
-## Follow-ups
+## Carry-over
 
-- [ ] Status of previously agreed actions
+- [ ] Unresolved actions from the previous session
 
 ## Discussion
 
@@ -23,7 +26,8 @@ Notes...
 
 ### SOON Funnel
 
-> Use when coaching through a challenge or goal.
+> Optional — useful when working through a challenge or goal together (coaching a
+> report, or thinking through your own with a manager/mentor).
 
 - **Success**: What does success look like?
 - **Obstacles**: What are the obstacles?
@@ -37,4 +41,7 @@ Notes...
 
 ## Observations
 
-<!-- Private notes: skill/will signals, growth observations, concerns, feedback to give -->
+<!-- Private notes, framed by relation:
+     report → skill/will signals, growth, feedback to give;
+     manager → managing-up notes, air cover needed;
+     peer/stakeholder → alignment, trust, dependency risks. -->

@@ -12,6 +12,11 @@ vault_root: "."
 owner:
   name: "Your Name"
   slug: "yourname"        # lowercase, matches your profile filename
+  role: em                # em | ic | pm | director — selects the active role pack
+                          # at .agents/roles/{role}.md, which sets role-specific
+                          # vocabulary, review dimensions, and report format.
+                          # Default `em` reproduces the classic manager behavior.
+                          # See docs/roles.md. Run `/configure` to change it.
 
 # Person slug mappings — resolve @Mentions in prose to profile filenames.
 # Optional. One line per direct report / collaborator (the configure skill

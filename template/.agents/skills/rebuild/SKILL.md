@@ -5,6 +5,12 @@ description: Regenerate all _index.md dashboard files (weekly, people, projects,
 
 Rebuild all dashboard index files from current content.
 
+Read `owner.role` from .agents/config.yaml (default `em`) and open the role pack at
+`.agents/roles/{role}.md` for its "Sections in focus / dormant" note. Build **every**
+dashboard whose folder has content (they degrade to a minimal placeholder when empty);
+order and lead with the role's in-focus sections. A role never removes a dashboard — it
+only changes emphasis.
+
 For each of the following dashboards, scan the relevant content files and generate a fresh `_index.md`:
 
 ---
@@ -13,7 +19,7 @@ For each of the following dashboards, scan the relevant content files and genera
 Scan all `01-weekly/YYYY-Www.md` files. Build a table with: Week, Status, completion rate (count `[x]` vs `[ ]`), and any `#blocked` items. Highlight the current `active` week.
 
 ### 02-people/_index.md
-Scan all `02-people/profiles/*.md`. Build a roster table: Name, Role, Level, Skill/Will rating, Status. Note anyone with status other than `active`. Also list 1-on-1 cadence (count files per person in one-on-ones/).
+Scan all `02-people/profiles/*.md`. Build a roster table: Name, Role, Relation, Level, Status. Show the **Skill/Will** rating only for people with `relation: report` (blank otherwise). Note anyone with status other than `active`. Also list 1-on-1 cadence (count files per person in one-on-ones/).
 
 ### 03-projects/_index.md
 Scan `03-projects/*/` (each subfolder except `archive/`), read the hub `{slug}.md` file inside. Group by `status` (Active · Proposed · Paused · Completed · Cancelled). For each project list: name (linked to the hub doc), `priority`, `quarter`, and a Jira epic link if `jira_epic` is set. Then scan `03-projects/archive/*/` into a Completed/Archive table. Do **not** touch the `<!-- rollup -->` blocks inside hub docs — those are owned by `project-sync`.

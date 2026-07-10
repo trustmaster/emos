@@ -12,7 +12,7 @@ Give a morning briefing for today. Do the following in order:
    - Delegated items (`#delegate`) still pending
 3. Check 05-incidents/ for any incidents with status `detected` or `mitigating`.
 4. Check project folders in 03-projects/ (excluding `archive/`) for any projects with `priority: P0` or `priority: P1` that have a `target_date` within the next 14 days.
-5. Check 02-people/one-on-ones/ for any 1-on-1s scheduled this week (look for files dated this week).
+5. Check 02-people/one-on-ones/ for any 1-on-1s scheduled this week (look for files dated this week). *(Applies to any role that holds 1-on-1s; if there are none this week, omit the section rather than showing it empty.)*
 
 Present the briefing as:
 
@@ -31,6 +31,6 @@ Any incidents not yet `resolved` or `reviewed`.
 P0/P1 projects approaching their target date.
 
 ### 1-on-1s This Week
-Who is scheduled, with links to their profile and last session.
+Who is scheduled, with links to their profile and last session. Omit this section if none.
 
 Keep it terse — this is a quick scan, not a narrative.
