@@ -197,6 +197,15 @@ in your config.
 | `/decision <title>` | New ADR with the next sequential number |
 | `/incident <desc>` | Post-mortem file with inferred severity and a follow-up TODO |
 
+**Product**
+
+| Skill | What it does |
+|-------|--------------|
+| `/prd-new <title>` | PRD in a project's `docs/` — problem, goals, requirements, metrics, rollout |
+| `/experiment-new <name>` | A-B test brief — hypothesis, primary + guardrail metrics, variants, sizing, results log |
+| `/roadmap-new <horizon>` | Now / Next / Later roadmap in `07-strategy/roadmaps/`; links projects to roll up |
+| `/research-new <topic>` | User-research / interview-synthesis note in `09-knowledge/research/` (PII-free) |
+
 **Reporting**
 
 | Skill | What it does |
