@@ -128,7 +128,11 @@ Role tokens are resolved from the active role pack (`.agents/roles/{owner.role}.
 | `candidate` | `06-hiring/interviews/{firstname}-{lastname}.md` |
 | `performance-review` | `02-people/reviews/{cycle}/{slug}.md` |
 | `okr` | `07-strategy/okrs/YYYY-QN.md` |
+| `roadmap` | `07-strategy/roadmaps/{slug}.md` |
 | `meeting` | `08-meetings/YYYY-MM-DD-{slug}.md` |
+| `prd` | `03-projects/{slug}/docs/prd.md` |
+| `experiment` | `03-projects/{slug}/docs/experiments/{name}.md` |
+| `research` | `09-knowledge/research/YYYY-MM-DD-{slug}.md` |
 
 ---
 
@@ -289,6 +293,10 @@ Skills live in `.agents/skills/` (discoverable by Claude Code via the
 | `/project-new <title>` | Create a new project tracker |
 | `/project <slug>` | Load a project's full context into the session |
 | `/project-sync [slug]` | Regenerate project hub rollups from linked content |
+| `/prd-new <title/project>` | Create a PRD in a project's `docs/` |
+| `/experiment-new <name/project>` | Create an experiment / A-B test brief in a project's `docs/experiments/` |
+| `/roadmap-new <horizon>` | Create a Now/Next/Later roadmap in `07-strategy/roadmaps/` |
+| `/research-new <topic>` | Create a user-research note in `09-knowledge/research/` |
 | `/meeting-new <title>` | Create a meeting note, optionally linked to a project |
 | `/capture <text>` | Quick capture to 00-inbox |
 | `/perf-review <person>` | Prepare evidence and narrative for a performance review |

@@ -15,7 +15,11 @@ This file is the single source of truth for naming, tagging, and status vocabula
 | Incident           | `YYYY-MM-DD-{slug}.md`           | `2026-02-24-checkout-outage.md`      |
 | Interview          | `{firstname}-{lastname}.md`      | `jane-doe.md`                        |
 | OKR                | `YYYY-QN.md`                     | `2026-Q1.md`                         |
+| Roadmap            | `{slug}.md` in `roadmaps/`       | `07-strategy/roadmaps/2026-h2.md`    |
 | Meeting            | `YYYY-MM-DD-{slug}.md`           | `2026-05-14-planning-sync.md`        |
+| PRD                | `{slug}/docs/prd.md` (or `prd-{feature}.md`) | `guest-checkout/docs/prd.md`         |
+| Experiment         | `{slug}/docs/experiments/{name}.md` | `guest-checkout/docs/experiments/one-tap-reorder.md` |
+| User research      | `YYYY-MM-DD-{slug}.md` in `research/` | `09-knowledge/research/2026-07-11-onboarding-interviews.md` |
 | Performance review | `{person-slug}.md` in cycle dir  | `reviews/2024-EOY/alex.md`           |
 
 **Slug rules**: lowercase, words separated by hyphens, no spaces, no special characters.
@@ -56,7 +60,11 @@ Each `type:` has a specific set of valid `status:` values.
 | candidate          | `screening` · `interviewing` · `offer` · `hired` · `rejected` · `withdrawn` |
 | performance-review | `draft` · `submitted` · `discussed` · `finalized`            |
 | okr                | `planning` · `active` · `reviewing` · `closed`               |
+| roadmap            | `draft` · `active` · `superseded`                            |
 | decision           | `proposed` · `accepted` · `superseded` · `deprecated`        |
+| prd                | `draft` · `review` · `approved` · `shipped` · `archived`     |
+| experiment         | `proposed` · `running` · `analyzing` · `concluded` · `abandoned` |
+| research           | `planned` · `in-progress` · `synthesized` · `archived`       |
 | person             | `active` · `on-leave` · `departing` · `departed`             |
 
 ## Priority Levels

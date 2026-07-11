@@ -46,6 +46,7 @@ paths:
   knowledge_management: "09-knowledge/management"
   knowledge_coaching: "09-knowledge/coaching"
   knowledge_tech: "09-knowledge/tech"
+  knowledge_research: "09-knowledge/research"    # user/product research notes
   reports: "10-reports"
   templates: "_templates"
 

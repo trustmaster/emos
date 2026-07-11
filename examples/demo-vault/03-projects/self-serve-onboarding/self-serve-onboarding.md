@@ -55,14 +55,17 @@ Guided setup flow + automated verification, with a manual fallback for edge case
 - [@Marco](../../02-people/profiles/marco.md) — checkout UI
 
 ### Strategy
-*(none)*
+- [Payments Platform — H2 2026](../../07-strategy/roadmaps/2026-h2.md) — roadmap · 2026-H2
 
 ### Knowledge
-*(none)*
+- [Onboarding Drop-off Interviews](../../09-knowledge/research/2026-07-11-onboarding-drop-off-interviews.md) — research · planned
 
 ### Reports
 *(none)*
 
 ### Open TODOs
 - [ ] Draft the guided setup flow — `01-weekly/2026-W26.md`
+- [ ] Draft PRD: Self-Serve Onboarding — `01-weekly/2026-W26.md`
+- [ ] Set up experiment: Progressive Setup Checklist — `01-weekly/2026-W26.md`
+- [ ] Run/synthesize research: Onboarding Drop-off Interviews — `01-weekly/2026-W26.md`
 <!-- rollup:end -->
