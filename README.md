@@ -141,6 +141,7 @@ unresolved threads forward automatically.
 > *"Pull everything about the GCP cost project into one place."* — full context loaded into the session
 > *"Start meeting notes for the GCP planning sync."*
 > *"Record a decision: we're adopting spot instances for batch workers."* — writes the next ADR
+> *"Draft a design doc for the spot-instance migration."* — an RFC in the project's `docs/`, ready to circulate
 > *"Refresh the project's Related section."* — regenerates the hub rollup after you've tagged content
 
 **Handle an incident**
@@ -155,6 +156,7 @@ current week.
 > *"Draft my weekly manager update."* — synthesizes the week's 1-on-1s, projects, and incidents
 > *"Pull the current sprint into a report."* — Jira sprint snapshot grouped by status
 > *"Help me prepare Priya's performance review."* — gathers real evidence, invents no ratings
+> *"Log a win: cut checkout p99 latency 40% this sprint."* — appends to your brag doc so review season writes itself
 
 **Pull in outside context** (when the matching tool is enabled)
 
@@ -195,6 +197,7 @@ in your config.
 | `/project-sync [slug]` | Regenerate the hub's auto Related rollup |
 | `/meeting-new <title>` | Dated meeting note linked to a project |
 | `/decision <title>` | New ADR with the next sequential number |
+| `/design-doc-new <title>` | Technical design doc / RFC in a project's `docs/` — the engineering *how*: design, alternatives, security/perf, rollout |
 | `/incident <desc>` | Post-mortem file with inferred severity and a follow-up TODO |
 
 **Product**
@@ -211,6 +214,7 @@ in your config.
 | Skill | What it does |
 |-------|--------------|
 | `/manager-report` | Weekly async status, synthesized from weeklies, 1-on-1s, projects, incidents |
+| `/brag-log [win]` | Append to your evergreen impact log (brag doc), or harvest recent wins — feeds self-reviews and snippets |
 | `/jira-sync` ⚙︎ | Pull the current sprint into a status-grouped report |
 
 **Integrations** (capability-gated ⚙︎)
