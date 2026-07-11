@@ -18,6 +18,7 @@ This file is the single source of truth for naming, tagging, and status vocabula
 | Roadmap            | `{slug}.md` in `roadmaps/`       | `07-strategy/roadmaps/2026-h2.md`    |
 | Meeting            | `YYYY-MM-DD-{slug}.md`           | `2026-05-14-planning-sync.md`        |
 | PRD                | `{slug}/docs/prd.md` (or `prd-{feature}.md`) | `guest-checkout/docs/prd.md`         |
+| Design doc / RFC   | `{slug}/docs/design-doc.md` (or `design-doc-{feature}.md`) | `payments-platform/docs/design-doc.md` |
 | Experiment         | `{slug}/docs/experiments/{name}.md` | `guest-checkout/docs/experiments/one-tap-reorder.md` |
 | User research      | `YYYY-MM-DD-{slug}.md` in `research/` | `09-knowledge/research/2026-07-11-onboarding-interviews.md` |
 | Performance review | `{person-slug}.md` in cycle dir  | `reviews/2024-EOY/alex.md`           |
@@ -63,8 +64,10 @@ Each `type:` has a specific set of valid `status:` values.
 | roadmap            | `draft` · `active` · `superseded`                            |
 | decision           | `proposed` · `accepted` · `superseded` · `deprecated`        |
 | prd                | `draft` · `review` · `approved` · `shipped` · `archived`     |
+| design-doc         | `draft` · `review` · `accepted` · `implemented` · `superseded` |
 | experiment         | `proposed` · `running` · `analyzing` · `concluded` · `abandoned` |
 | research           | `planned` · `in-progress` · `synthesized` · `archived`       |
+| brag-log           | `active` · `archived`                                        |
 | person             | `active` · `on-leave` · `departing` · `departed`             |
 
 ## Priority Levels

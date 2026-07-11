@@ -15,10 +15,11 @@ This is an evidence-gathering and narrative-drafting workflow. Do NOT make up ra
 surface evidence and let the reader draw conclusions.
 
 **Evidence sources depend on the subject:**
-- **Self-review (subject = owner):** the owner has no profile/1-on-1s. Gather from the
-  owner's **own** weekly files (wins, deliverables, `#win`/`#risk`), projects where
-  `owner == owner.slug`, decisions authored, and incidents owned. Skip the `@mention` and
-  profile steps below.
+- **Self-review (subject = owner):** the owner has no profile/1-on-1s. **Start with the
+  brag log** (`{paths.reports}/brag-log.md`) if it exists — it's the richest, pre-curated
+  source. Then supplement from the owner's **own** weekly files (wins, deliverables,
+  `#win`/`#risk`), projects where `owner == owner.slug`, decisions authored, and incidents
+  owned. Skip the `@mention` and profile steps below.
 - **Someone else (subject ≠ owner):** use all steps below.
 
 1. Read 02-people/profiles/{slug}.md — note role, level, growth_areas, strengths, current cycle expectations. *(others only)*
@@ -32,7 +33,7 @@ surface evidence and let the reader draw conclusions.
    - Self-review: `02-people/reviews/{cycle}/{owner.slug}.md` with `person: {owner.slug}`.
    - Both set `cycle:` and `status: draft`.
 8. Populate or append to the review file:
-   - **## Evidence Log** — bulleted list of raw evidence per source (weeklies, projects, incidents, and 1-on-1s for others), each with date and source file reference
+   - **## Evidence Log** — bulleted list of raw evidence per source (the brag log for a self-review, weeklies, projects, incidents, and 1-on-1s for others), each with date and source file reference
    - **## Competency Notes** — brief notes per the role pack's `{{review_dimensions}}`
    - **## Draft Narrative** — 3–5 sentences summarizing the period, highlighting standout moments
 
