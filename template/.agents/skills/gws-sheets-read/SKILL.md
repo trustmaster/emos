@@ -1,19 +1,11 @@
 ---
 name: gws-sheets-read
 description: "Google Sheets: Read values from a spreadsheet."
-metadata:
-  version: 0.22.5
-  openclaw:
-    category: "productivity"
-    requires:
-      bins:
-        - gws
-    cliHelp: "gws sheets +read --help"
 ---
 
 # sheets +read
 
-> **PREREQUISITE:** Read `../gws-shared/SKILL.md` for auth, global flags, and security rules. If missing, run `gws generate-skills` to create it.
+> **Prerequisite:** [gws-shared](../gws-shared/SKILL.md) — auth, global flags, security rules.
 
 Read values from a spreadsheet
 

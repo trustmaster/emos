@@ -43,6 +43,25 @@ tools:
 `confluence-load` / `confluence-save` will report that no wiki is configured. You
 can leave the `confluence:` config block in place or delete it.
 
+## A note on the Google Workspace (`gws-*`) skills
+
+The `gws-*` skills (`gws-gmail`, `gws-drive`, `gws-sheets`, …) originate from the
+[`gws` CLI](https://github.com/googleworkspace/cli)'s `gws generate-skills`
+command, but the copies shipped with emOS are **hand-curated**, not raw generator
+output. They've been trimmed to the handful of operations a vault actually uses,
+stripped of generator boilerplate, and aligned with emOS conventions (house-style
+frontmatter, the untrusted-content rule in `gws-shared`). For the full API surface
+of any service, use the discovery commands each skill documents —
+`gws <service> --help` and `gws schema <service>.<resource>.<method>`.
+
+**Don't run `gws generate-skills` on top of them.** It regenerates the verbose,
+un-curated versions and overwrites the curated ones. If you need an operation a
+skill doesn't cover, reach for the discovery commands above, or add your own
+helper skill beside them (e.g. `gws-gmail-send`) — the same way you'd add any
+other skill. Being shipped framework files, they're updated by emOS on
+`emos update`, and any local edit you make is preserved as a `.emos-new` sidecar
+(see the main README, "Staying Up to Date").
+
 ## Adding a new tool — worked example: Linear
 
 Say you use **Linear** instead of Jira. You add a skill and an adapter; you do

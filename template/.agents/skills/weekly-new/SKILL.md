@@ -5,7 +5,7 @@ description: Create the planning file for the current week, carrying forward ope
 
 Create the planning file for the current week.
 
-1. Run `date -j -f "%Y-%m-%d" "$(date +%Y-%m-%d)" "+%G-W%V"` to get the current ISO week (e.g. 2026-W24). Do not infer it from the date. Check whether 01-weekly/YYYY-Www.md already exists. If it does, say so and stop — do not overwrite it.
+1. Run `date +%G-W%V` to get the current ISO week (e.g. 2026-W24). Do not infer it from the date. (This form is portable across macOS/BSD and GNU/Linux.) Check whether 01-weekly/YYYY-Www.md already exists. If it does, say so and stop — do not overwrite it.
 2. Read the most recent completed weekly file in 01-weekly/ (highest week number with status: completed or the previous week).
 3. From that file, collect all unchecked `- [ ]` items and any `#follow-up` tags — these are the carry-forward items. **Preserve any `#project/{slug}` tags on these lines verbatim** so carried tasks stay linked to their projects (this is what keeps them in the project hubs' Open TODOs rollup).
 4. Read the current 01-weekly/_index.md for any delegated items still open.

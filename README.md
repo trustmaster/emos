@@ -219,6 +219,7 @@ in your config.
 | Skill | What it does |
 |-------|--------------|
 | `/configure` | Interactive setup/update of owner, team, people, and tools (don't hand-edit YAML) |
+| `/doctor` | Read-only health check — broken frontmatter, rotted project links, unmapped mentions, stale dashboards |
 | `/rebuild` | Regenerate all `_index.md` dashboards |
 | `/emos-update` | Check for and apply framework updates |
 
