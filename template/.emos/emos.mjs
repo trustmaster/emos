@@ -126,6 +126,9 @@ function resolveSource(src) {
 }
 const cleanup = () => { if (TMP_SRC) fs.rmSync(TMP_SRC, { recursive: true, force: true }); };
 
+// Files npm strips the leading dot from during publish; map source name → vault name.
+const DEPLOY_AS = { "gitignore": ".gitignore" };
+
 // ── Core sync (used by check/update/init) ────────────────────────────────────
 function syncFrom(src, apply, sourceLabel) {
   const mf = loadManifest(path.join(src, ".emos", "manifest"));
@@ -136,7 +139,8 @@ function syncFrom(src, apply, sourceLabel) {
   for (const r of walk(src)) {
     if (!isFramework(r, mf)) continue;
     const from = path.join(src, r.split("/").join(path.sep));
-    const to = path.join(ROOT, r.split("/").join(path.sep));
+    const vaultR = DEPLOY_AS[r] || r;
+    const to = path.join(ROOT, vaultR.split("/").join(path.sep));
     const sh = sha(from), th = sha(to), rh = recorded.get(r);
 
     if (!fs.existsSync(to)) {
