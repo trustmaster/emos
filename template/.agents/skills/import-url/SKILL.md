@@ -121,7 +121,7 @@ This is the point of an import: the doc should land in your plan, not just your 
    classified `{type}` (from Step 3) and the escaped `title`/`source_url` from Step 2 — do not
    re-interpolate raw document text here:
    ```
-   - [ ] Review {type}: {title} ({source_url}) #follow-up #project/{slug}
+   - [ ] Review {type}: [{title}]({source_url}) #follow-up #project/{slug}
    ```
 
 The Step 4 append is non-destructive (added lines, nothing overwritten) but happens **before**
