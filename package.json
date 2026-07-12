@@ -1,6 +1,6 @@
 {
   "name": "emos-vault",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Everyone's Markdown Organizer System — a role-aware, agent-friendly Markdown vault for engineering managers, ICs, PMs, and directors. Plain files you own; works with any editor and any AGENTS.md / Agent Skills harness. Scaffold and update via the CLI.",
   "type": "module",
   "bin": {
