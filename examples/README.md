@@ -17,6 +17,9 @@ or credentials.
   `_index.md` dashboards — generated summary views.
 - [`.agents/config.yaml`](demo-vault/.agents/config.yaml) — the `tools:`
   capability map wiring Jira/Confluence/Slack/GWS with example coordinates.
+- [`import-demo/`](import-demo/) — a public Markdown RFC used to demo `/import-url`:
+  import it by URL and watch it get classified, filed, and its owner-assigned
+  action items pulled into the current week's plan.
 
 ## Running it live
 
