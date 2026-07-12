@@ -48,19 +48,10 @@ projects: []            # project slugs this page relates to (see Step 3)
 
 ## Step 3 — Classify and route
 
-Analyse the content and determine the best emOS home:
-
-| Content signals | Route to |
-|----------------|----------|
-| Meeting recap, attendees, agenda | `08-meetings/YYYY-MM-DD-{slug}.md` |
-| Architecture, design doc, ADR | `04-decisions/YYYY-MM-DD-{slug}.md` |
-| How-to, reference, framework, glossary | `09-knowledge/{best-subfolder}/{slug}.md` |
-| Incident, post-mortem, timeline | `05-incidents/YYYY-MM-DD-{slug}.md` |
-| Project plan, roadmap, OKR | `03-projects/{slug}/` (create folder + main doc) |
-| Team info, processes, norms | `09-knowledge/management/{slug}.md` |
-| Unclear or mixed | keep in `00-inbox/` for manual triage |
-
-The `09-knowledge/` subfolders are: `coaching`, `domain`, `management`, `reliability`, `tech`.
+Analyse the content and determine the best emOS home using the **Content Routing** table in
+[.agents/conventions.md](../../conventions.md#content-routing-imports--intake) — the single
+source of truth for content-type → destination. Follow its rules verbatim, including that
+project-local types (`design-doc`, `prd`) need a parent project.
 
 **Project association.** Detect whether the page relates to an active project in `03-projects/` (title, slug, or topic overlap). If so, set `projects: [slug]` on the inbox file (and carry it to the final destination when moved). If a project is likely but not certain, ask. This makes the page appear in the project's hub on the next `project-sync`.
 

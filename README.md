@@ -180,6 +180,7 @@ in your config.
 | `/weekly-review` | Close out the week — completion tally + retrospective |
 | `/capture` | Quick, no-analysis note into today's inbox |
 | `/inbox` | Triage inbox items — classify and route, with confirmation before moving |
+| `/import-url <url>` | Import any URL — Confluence, Google Doc, GitHub, or web page — classify and file it, then pull your action items into this week's plan (uses the matching tool when enabled, plain fetch otherwise) |
 
 **People**
 
