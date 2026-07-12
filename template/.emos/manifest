@@ -16,6 +16,7 @@
 
 AGENTS.md
 CONFIG.example.md
+.gitignore
 emos
 emos.cmd
 .agents/conventions.md
