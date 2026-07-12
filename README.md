@@ -4,6 +4,8 @@
 
 A Markdown-based operating system for engineering managers, technical leads, directors, and individual contributors. It's just plain `.md` files, so it works with whatever you already use — any Markdown editor (Obsidian, VS Code, Cursor, Zed, …) for humans, and any agentic coding harness (Claude Code, Codex, OpenCode, Cursor, Kimi Code, …) for the AI side. Your team, projects, decisions, incidents, 1-on-1s, and weekly planning live as files you own, with an agent that knows the conventions and does the filing.
 
+![emOS in action](https://raw.githubusercontent.com/trustmaster/emos/main/docs/assets/weekly-note-demo.gif)
+
 emOS combines powerful approaches:
 
 - Structured knowledge base that you can grow day by day
