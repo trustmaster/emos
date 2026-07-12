@@ -1,0 +1,58 @@
+# ── OS ──────────────────────────────────────────────────────────────────────
+.DS_Store
+._*
+Thumbs.db
+desktop.ini
+
+# ── Vim / Neovim ─────────────────────────────────────────────────────────────
+*.swp
+*.swo
+*.swn
+Session.vim
+.netrwhist
+
+# ── Emacs ────────────────────────────────────────────────────────────────────
+*~
+\#*\#
+.#*
+
+# ── Generic editor leftovers ─────────────────────────────────────────────────
+*.orig
+*.bak
+
+# ── Obsidian ─────────────────────────────────────────────────────────────────
+# Session state and cache — not meaningful to share
+.obsidian/workspace
+.obsidian/workspace.json
+.obsidian/cache
+.obsidian/.trash/
+# Plugin binaries (installed locally); track plugins.json to share the list
+.obsidian/plugins/*/main.js
+.obsidian/plugins/*/styles.css
+.obsidian/plugins/*/manifest.json
+
+# ── VS Code / Cursor ─────────────────────────────────────────────────────────
+# settings.json and extensions.json are intentionally left trackable
+.vscode/launch.json
+.vscode/*.code-workspace
+# Local history extension
+.history/
+# Cursor session state (.cursor/rules/ is worth tracking — un-ignore if you use it)
+.cursor/
+
+# ── JetBrains IDEs ───────────────────────────────────────────────────────────
+.idea/
+
+# ── Zed ──────────────────────────────────────────────────────────────────────
+.zed/
+
+# ── Sublime Text ─────────────────────────────────────────────────────────────
+*.sublime-workspace
+
+# ── Claude Code ──────────────────────────────────────────────────────────────
+# Ephemeral session state; vault behaviour is defined in AGENTS.md / .agents/
+.claude/
+
+# ── Logs & scratch ───────────────────────────────────────────────────────────
+*.log
+*.tmp
