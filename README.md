@@ -219,6 +219,7 @@ in your config.
 | `/manager-report` | Weekly async status, synthesized from weeklies, 1-on-1s, projects, incidents |
 | `/brag-log [win]` | Append to your evergreen impact log (brag doc), or harvest recent wins — feeds self-reviews and snippets |
 | `/jira-sync` ⚙︎ | Pull the current sprint into a status-grouped report |
+| `/github-sync` ⚙︎ | Snapshot a GitHub Projects board into a status-grouped report |
 
 **Integrations** (capability-gated ⚙︎)
 
@@ -226,6 +227,10 @@ in your config.
 |-------|-----------|--------------|
 | `/create-jira-ticket` | `issue_tracker` | Create a Jira ticket via MCP |
 | `/jira-sync` | `issue_tracker` | Snapshot the active sprint into a report |
+| `/create-github-issue` | `issue_tracker` | Create a GitHub issue (+ optional Project board) via `gh` |
+| `/github-sync` | `issue_tracker` | Snapshot a GitHub Projects board into a status-grouped report |
+| `/pr-review` | `code_host` | First-line PR review pass — summary, flags, architectural/dependency changes, escalations (chat only, never posts) |
+| `/github-browse` | `code_host` | Read-only remote repo exploration via `gh` — for incident investigation & assignments |
 | `/confluence-load`, `/confluence-save` | `wiki` | Import from / publish to Confluence |
 | `/slack-capture` | `chat` | Save a Slack thread as a classified note |
 | Google Workspace (`gws-*`) | `docs` | Gmail, Calendar, Drive, Docs, Sheets, Slides |
@@ -261,16 +266,19 @@ Tools are chosen by **capability**, not hardcoded:
 
 ```yaml
 tools:
-  issue_tracker: jira        # jira | none
+  issue_tracker: jira        # jira | github | none
+  code_host:     github       # github | none  (PR review + code browsing)
   wiki:          confluence   # confluence | none
   chat:          slack        # slack | none
   docs:          gws          # gws | none
 ```
 
 Each provider has an adapter in `.agents/integrations/` binding it to the skills
-that implement it. Adding a tool (Linear, Notion, Mattermost, MS Office…) is a
-new skill + adapter + config flip — you never edit the core workflows. See
-**[docs/integrations.md](docs/integrations.md)**.
+that implement it. One provider can fill several capabilities — `github` backs
+both `issue_tracker` (issue creation) and `code_host` (PR review + code
+browsing), so you can pair `issue_tracker: jira` with `code_host: github`. Adding
+a tool (Linear, Notion, Mattermost, MS Office…) is a new skill + adapter + config
+flip — you never edit the core workflows. See **[docs/integrations.md](docs/integrations.md)**.
 
 ## Staying up to date
 

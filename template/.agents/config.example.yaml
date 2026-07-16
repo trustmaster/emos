@@ -78,7 +78,8 @@ external:
 # edit the core workflows.
 # ─────────────────────────────────────────────────────────────────────────
 tools:
-  issue_tracker: jira         # shipped: jira · none
+  issue_tracker: jira         # shipped: jira · github · none
+  code_host:     none          # shipped: github · none  (PR review + code browsing)
   wiki:          confluence    # shipped: confluence · none
   chat:          slack         # shipped: slack · none
   docs:          gws           # shipped: gws · none
@@ -110,6 +111,14 @@ slack:
   channels:
     incidents: "#incidents"
     team: "#team"
+
+# GitHub integration — provider for `tools.issue_tracker: github` and/or
+# `tools.code_host: github` (used by create-github-issue, pr-review, github-browse;
+# adapter: .agents/integrations/github.md). Requires the `gh` CLI (auth via `gh auth`). Optional.
+github:
+  project: ""                  # default GitHub Project (number or URL) for create-github-issue
+  # Repos are provided per-invocation (you work across many repos/orgs) — there is no
+  # `repo` key here. Auth is handled by `gh auth`; no token is stored in this file.
 
 # Report generation (used by manager-report). Optional — leave "" to use the
 # default title "Weekly Async Report - {team}". Only set this to override it.

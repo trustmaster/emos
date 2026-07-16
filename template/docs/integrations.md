@@ -17,15 +17,21 @@ config.yaml → tools.{capability}   picks a provider
 provider skill (e.g. create-jira-ticket)  does the work, reads its own config block
 ```
 
-Four capabilities, each with a small operation contract (full list in
+Five capabilities, each with a small operation contract (full list in
 [`.agents/integrations/README.md`](../.agents/integrations/README.md)):
 
 | Capability | `tools` key | Operations | Shipped provider |
 |------------|-------------|------------|------------------|
-| Issue tracker | `issue_tracker` | `create_issue`, `sync_iteration` | `jira` |
+| Issue tracker | `issue_tracker` | `create_issue`, `sync_iteration` | `jira`, `github` |
+| Code host | `code_host` | `review_pr`, `browse_code` | `github` |
 | Wiki | `wiki` | `load_page`, `save_page` | `confluence` |
 | Chat | `chat` | `capture_thread` | `slack` |
 | Document suite | `docs` | `read_doc`, `write_doc`, `list_files` | `gws` |
+
+One provider may fill several capabilities — `github` fills both `issue_tracker`
+(`create-github-issue`) and `code_host` (`pr-review` + `github-browse`) from a
+single [`github.md`](../.agents/integrations/github.md) adapter, each section
+gated independently by config (e.g. `issue_tracker: jira` + `code_host: github`).
 
 A workflow never names a product — it resolves `config.tools.{capability}`, reads
 that provider's adapter, and follows it. If a capability is set to `none`, the
