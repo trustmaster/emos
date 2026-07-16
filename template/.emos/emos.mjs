@@ -13,10 +13,11 @@
  * as `<file>.emos-new`) instead of being clobbered.
  *
  * Usage (command is `emos`; first run via `npx emos-vault`):
- *   emos init     [--source <dir|git-url>]   # scaffold a fresh vault in the CWD
- *   emos check    [--source <dir|git-url>]   # dry-run: show what update would do
- *   emos update   [--source <dir|git-url>]   # apply framework updates
- *   emos baseline                            # record current framework hashes (no copy)
+ *   emos init        [--source <dir|git-url>]  # scaffold a fresh vault in the CWD
+ *   emos check       [--source <dir|git-url>]  # dry-run: show what update would do
+ *   emos update      [--source <dir|git-url>]  # apply framework updates
+ *   emos update-head [--ref <branch>]          # update from the GitHub repo HEAD (pre-release)
+ *   emos baseline                              # record current framework hashes (no copy)
  *
  * --source may be omitted when the tool ships bundled with a `template/` dir
  * (the published-package model); otherwise it is required for check/update/init.
@@ -206,6 +207,25 @@ function cmdUpdate(argv) {
   summary(s);
   if (s.nConf) console.log("  review *.emos-new files and merge by hand.");
 }
+// Upstream GitHub repo. `update-head` clones its latest HEAD (default branch, or
+// --ref <branch>) so developers can test unreleased framework changes before an
+// npm release goes out.
+const HEAD_REPO = "https://github.com/trustmaster/emos.git";
+function cmdUpdateHead(argv) {
+  const i = argv.indexOf("--ref");
+  const ref = i >= 0 ? argv[i + 1] : "";
+  const label = ref ? `${HEAD_REPO}#${ref}` : `${HEAD_REPO} (HEAD)`;
+  const clone = resolveSource(ref ? `${HEAD_REPO}#${ref}` : HEAD_REPO);
+  // The repo ships the framework under template/; fall back to the clone root
+  // if a future layout puts the manifest at the top level.
+  const src = fs.existsSync(path.join(clone, "template", ".emos", "manifest"))
+    ? path.join(clone, "template")
+    : clone;
+  console.log("emos update-head — vault: " + ROOT + " — source: " + label);
+  const s = syncFrom(src, true, label);
+  summary(s);
+  if (s.nConf) console.log("  review *.emos-new files and merge by hand.");
+}
 function cmdBaseline() {
   const mf = loadManifest(path.join(ROOT, ".emos", "manifest"));
   const map = new Map();
@@ -237,19 +257,21 @@ function cmdInit(argv) {
 }
 
 const HELP = `emOS framework tool — operates on the current directory
-  emos init     [--source <dir|git-url>]   scaffold a fresh vault in the CWD
-  emos check    [--source <dir|git-url>]   dry-run: show what update would do
-  emos update   [--source <dir|git-url>]   apply framework updates
-  emos baseline                            record current framework hashes (no copy)`;
+  emos init        [--source <dir|git-url>]  scaffold a fresh vault in the CWD
+  emos check       [--source <dir|git-url>]  dry-run: show what update would do
+  emos update      [--source <dir|git-url>]  apply framework updates
+  emos update-head [--ref <branch>]          update from the GitHub repo HEAD (pre-release)
+  emos baseline                              record current framework hashes (no copy)`;
 
 try {
   const [cmd, ...argv] = process.argv.slice(2);
   switch (cmd) {
     case "check": cmdCheck(argv); break;
     case "update": cmdUpdate(argv); break;
+    case "update-head": cmdUpdateHead(argv); break;
     case "baseline": cmdBaseline(argv); break;
     case "init": cmdInit(argv); break;
     case undefined: case "help": case "-h": case "--help": console.log(HELP); break;
-    default: die(`unknown command: ${cmd} (try: check | update | baseline | init | help)`);
+    default: die(`unknown command: ${cmd} (try: check | update | update-head | baseline | init | help)`);
   }
 } finally { cleanup(); }

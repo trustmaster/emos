@@ -33,6 +33,16 @@ node /path/to/repo/template/.emos/emos.mjs check --source /path/to/repo/template
 `emos init`/`check`/`update` operate on the **current working directory**. There
 are no build or test frameworks — the CLI is plain Node, and skills are Markdown.
 
+Once your change is pushed, validate it in a real vault before cutting a release
+with `emos update-head`, which updates from the GitHub repo's HEAD instead of the
+published npm release:
+
+```bash
+cd /path/to/a/vault
+npx emos-vault update-head            # default branch HEAD
+npx emos-vault update-head --ref dev  # a specific branch
+```
+
 ## Adding or changing a skill
 
 Skills are Markdown instruction files under `template/.agents/skills/{name}/SKILL.md`.

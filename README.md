@@ -296,6 +296,15 @@ npx emos-vault update    # pull the latest published release into this vault
 Run either from inside your vault. Locally-edited framework files are preserved
 as `<file>.emos-new` for you to merge, never clobbered.
 
+**Testing unreleased changes.** To pull the GitHub repo's latest `HEAD` instead
+of the published npm release — useful for developers validating changes before a
+release:
+
+```bash
+npx emos-vault update-head            # update from the default branch HEAD
+npx emos-vault update-head --ref dev  # or a specific branch
+```
+
 > **Windows note:** agent discovery uses a `.claude → .agents` symlink. On
 > Windows, enable Developer Mode or `git config core.symlinks true`. If symlinks
 > aren't available, `emos init` copies `.agents` to `.claude` instead — re-run
