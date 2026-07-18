@@ -13,7 +13,7 @@ emOS combines powerful approaches:
 - Extensible via skills and tools
 - Connects everything into an integrated operating system
 
-No database, no SaaS, no lock-in. Just files in a git repo you control.
+No database, no SaaS, no lock-in. Just files on disk or in a git repo you control.
 
 ```bash
 # Scaffold a fresh vault in an empty directory
@@ -30,9 +30,10 @@ Engineering management generates a lot of connected context — a project pulls 
 people, meetings, decisions, incidents, and strategy. Most tools scatter that
 across apps. emOS keeps it in one traversable Markdown vault where:
 
-- **You own the data.** Plain files, in your git repo. Readable in any editor.
-- **An agent does the work.** Skills for 1-on-1 prep, weekly planning, incident
+- **You own the data.** Plain files, on your machine or in a git repo. Readable in any editor.
+- **An agent does the repetitive work.** Skills for 1-on-1 prep, weekly planning, incident
   post-mortems, performance-review evidence, project context, and more.
+- **You make the decisions.** By default, you are in the driver seat to make decisions and communicate them. No automatic AI-replies on your behalf: human interactions stay human.
 - **Projects are first-class.** Any file links to a project via a `projects:`
   key; each project hub shows an auto-generated rollup of everything related.
 - **Tools are pluggable.** Jira/Confluence/Slack/Google Workspace ship as
