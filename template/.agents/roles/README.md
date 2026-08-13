@@ -52,7 +52,23 @@ Every pack fills the same four blocks (see [`_pack-template.md`](_pack-template.
 | [`em`](em.md) | Engineering manager (default) | `manager-async` | report (downward) |
 | [`ic`](ic.md) | Individual contributor / senior+ | `snippets` | manager (upward) |
 | [`pm`](pm.md) | Product manager | `launch-status` | stakeholder (lateral) |
-| [`director`](director.md) | Director / senior leader | `portfolio` | manager / skip |
+| [`director`](director.md) | Leaders of managers, M2+ — senior manager · head of · director · VP | `portfolio` | report / skip |
+
+The `director` pack deliberately covers the whole M2+ band rather than splitting into
+separate `head-of` / `vp` packs: the shape of the job is the same at each rung, only the
+scale changes. If your org's vocabulary differs enough to matter, copy it — that's the
+supported path, and your copy is never overwritten.
+
+## Skill audience (`roles:`)
+
+A skill may declare an optional `roles: [director]` key in its frontmatter. It is a **hint,
+not a gate** — the skill stays invokable by anyone, and an agent should still run it on
+request. It only informs what gets *suggested*: de-emphasize a skill whose `roles:` omits
+the active role. A skill with no `roles:` key applies to every role.
+
+This is the skill-side mirror of what a pack does from the role side, and it's how the
+org-layer skills (`team-*`, `portfolio`, `calibration`, `qbr`, …) stay out of an IC's way
+without being hidden from them.
 
 ## Adding a custom role pack
 

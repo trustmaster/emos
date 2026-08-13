@@ -60,6 +60,13 @@ a profile is later created for someone, set its `relation:` (`report` · `manage
 · `peer` · `stakeholder` · `skip`) — default to the role pack's default relation.
 Skipping is fine — they can re-run this later as people join.
 
+**For `owner.role: director` only** — after the people map, *offer* (don't assume) to
+register the teams they lead: "Want me to create team entities for the teams reporting
+into you?" If yes, collect the team names and run `team-new` for each. If they skip,
+say `/team-new` is there whenever they want it — everything else works without it.
+Teams are optional: `paths.teams` defaults to `02-people/teams` and no skill requires
+the key to be present in `config.yaml`.
+
 ## Step 3 — Tools (capabilities, optional)
 
 For each capability, ask which provider they use, or `none` (the safe default —

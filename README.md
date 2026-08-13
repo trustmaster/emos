@@ -64,7 +64,7 @@ Want to see it populated first? Browse [`examples/`](examples/) — a fictional
 ```
 00-inbox/     Quick capture — unsorted
 01-weekly/    Weekly planning + review
-02-people/    Profiles, 1-on-1s, reviews
+02-people/    Profiles, 1-on-1s, reviews, teams
 03-projects/  One folder per project; each has a hub doc with a Related rollup
 04-decisions/ ADRs
 05-incidents/ Post-mortems
@@ -95,7 +95,7 @@ language and emphasis change.
 | `em` (default) | Direct reports, team-health async, downward coaching 1-on-1s |
 | `ic` | Self-review brag-doc, weekly *snippets*, upward 1-on-1s with your manager |
 | `pm` | PRDs & launches, product-status update for stakeholders, roadmap/OKR focus |
-| `director` | Portfolio of teams, program rollups, 1-on-1s with managers & skip-levels |
+| `director` | Portfolio of teams, program rollups, 1-on-1s with managers & skip-levels — covers the whole M2+ band (senior manager · head of · director · VP) |
 
 Set it via `/configure` (or edit the field), and switch anytime. A person's
 `relation:` (`report`/`manager`/`peer`/`stakeholder`) refines framing per person.
@@ -161,6 +161,19 @@ current week.
 > *"Help me prepare Priya's performance review."* — gathers real evidence, invents no ratings
 > *"Log a win: cut checkout p99 latency 40% this sprint."* — appends to your brag doc so review season writes itself
 
+**Lead through managers** (for directors and other leaders of leaders)
+
+> *"Register the Payments team — Priya runs it."* — a team entity you can hang work, people, and health off
+> *"What's the state of the org?"* — every team, work grouped by team, cross-team risks, open escalations
+> *"How healthy is Payments this quarter?"* — a scorecard from incidents, 1-on-1s, hiring and delivery, logged to the team
+> *"Who am I overdue to skip with?"* — coverage across the org, plus themes that contradict what managers report
+> *"Build the calibration pack for this cycle."* — evidence grouped by manager, consistency checks, no invented ratings
+> *"I need a decision from my VP on the vendor switch."* — a one-page brief with options, a recommendation, and the ask
+> *"Checkout is blocked on the platform team."* — an escalation with impact, what's been tried, and the fallback
+
+Teams are **opt-in**: a vault that never runs `/team-new` behaves exactly as before, and
+every skill above degrades to project- and person-level grouping.
+
 **Pull in outside context** (when the matching tool is enabled)
 
 > *"Save this Slack thread: <url>"* — classified note into the inbox
@@ -172,7 +185,8 @@ current week.
 Ask for any of these in plain language — the agent matches your request to the
 right skill. The `/<name>` column is the slash alias where your harness supports
 it. Provider skills (marked ⚙︎) only activate when the matching tool is enabled
-in your config.
+in your config. Org-layer skills (marked 👥) are written for leaders of managers —
+they stay invokable by any role, they're just de-emphasized when they don't fit yours.
 
 **Daily & weekly cadence**
 
@@ -212,6 +226,26 @@ in your config.
 | `/experiment-new <name>` | A-B test brief — hypothesis, primary + guardrail metrics, variants, sizing, results log |
 | `/roadmap-new <horizon>` | Now / Next / Later roadmap in `07-strategy/roadmaps/`; links projects to roll up |
 | `/research-new <topic>` | User-research / interview-synthesis note in `09-knowledge/research/` (PII-free) |
+
+**Leading through managers** (👥 — written for `director`; invokable by any role, inert
+until the vault has teams)
+
+| Skill | What it does |
+|-------|--------------|
+| `/team-new <name>` 👥 | Register a team — an org unit you lead through its manager |
+| `/team-sync [slug]` 👥 | Regenerate team hub rollups and the portfolio hub |
+| `/portfolio` 👥 | The org-scale `/project` — every team, work by team, risks, escalations, blind spots |
+| `/team-health [slug]` 👥 | Team scorecard: delivery, quality, morale, retention, hiring, tech health |
+| `/skip-level [name]` 👥 | Prep a skip-level, or (no args) report coverage and themes across the org |
+| `/calibration <cycle>` 👥 | Calibration evidence grouped by manager + cross-team consistency checks |
+| `/talent-map` 👥 | Placement, promo candidates, key-person risk, succession cover |
+| `/promo-case <name>` 👥 | Promotion packet — evidence at the target level, gaps, sponsor plan |
+| `/staff-meeting` 👥 | Next note in the leadership-team series, carrying open actions forward |
+| `/exec-brief <topic>` 👥 | One-page decision memo — ask, options, recommendation, risks |
+| `/escalation <topic>` 👥 | Escalation with impact, what's been tried, the ask, and the fallback |
+| `/headcount [quarter]` 👥 | Reqs by team, pipeline health, attrition themes, prioritisation order |
+| `/qbr [quarter]` 👥 | Quarterly review — commitments vs. outcomes first, next quarter's bets |
+| `/reliability-review [period]` 👥 | Aggregate incident trends, repeat causes, unclosed post-mortem actions |
 
 **Reporting**
 
@@ -260,6 +294,12 @@ emOS is filed by *type* (meetings, decisions, people…) but work happens by
 
 Run `/project-sync` to regenerate it, or `/project <slug>` to load a project's
 full context into one session. See [`examples/`](examples/) for a populated hub.
+
+**Teams work the same way, one level up.** If you lead through managers, `/team-new`
+registers a team at `02-people/teams/{slug}.md` with the same kind of hub. Files link to
+it with `teams: [slug]` (or `#team/{slug}` in prose), `/team-sync` regenerates the rollup,
+and `07-strategy/portfolio.md` aggregates every team. It's entirely optional — a vault
+that never creates a team is unaffected, and no config change is required to start.
 
 ## Tools & integrations
 

@@ -7,6 +7,10 @@ Regenerate the `<!-- rollup:start -->…<!-- rollup:end -->` block(s) in project
 
 Read `paths.projects` from `.agents/config.yaml` (default `03-projects`).
 
+> Team hub rollups (`02-people/teams/*.md`) and the portfolio hub are owned by
+> `team-sync`, which keys off `teams:` / `#team/{slug}`. This skill only ever writes
+> project hubs, so the two never contend for the same block.
+
 ## Step 1 — Determine scope
 
 - If args is a project slug (or a name that resolves to one folder in `{paths.projects}/`), sync only that project.

@@ -69,6 +69,12 @@ never folder locations. A person's `relation:` (`report` · `manager` · `peer` 
 · `skip`, from their profile) refines framing per person; absent ⇒ the pack's
 `{{oneonone_default_relation}}`. Full guide: [docs/roles.md](docs/roles.md).
 
+**Skill audience (`roles:`).** A skill may declare an optional `roles: [director]` key in
+its frontmatter. This is a **hint, not a gate**: the skill stays invokable by anyone, and
+you should still run it when the user asks. Use it only to decide what to *suggest* —
+de-emphasize a skill whose `roles:` omits the active role. A skill with no `roles:` key
+applies to everyone.
+
 ---
 
 ## Person Reference Resolution
@@ -79,6 +85,38 @@ Resolve `@Mentions` using `.agents/config.yaml` → `people:` map. Each entry ma
 creating a new profile.
 
 ---
+
+## Teams & the Org Layer (optional)
+
+Leaders of managers work through **teams**, so a vault may register them as first-class
+files at `02-people/teams/{slug}.md` (`paths.teams`, default `02-people/teams`). This
+layer is **entirely opt-in** — a vault with no team files behaves exactly as it always
+has, and no skill fails or prompts because `paths.teams` is absent from `config.yaml`.
+
+- **Join key:** `teams: [slug]` in frontmatter, or `#team/{slug}` in prose and weekly
+  TODOs. Mechanically identical to `projects:` / `#project/{slug}`, and independent of it
+  — a file can carry both.
+- **Rollups:** team hubs and `07-strategy/portfolio.md` carry `<!-- rollup:start -->`
+  blocks owned by **`team-sync`**. `project-sync` never writes them.
+- **Person profiles** may add `teams: [slug]`. The existing `team:` string field is
+  unchanged and still valid.
+
+Full rules: `.agents/conventions.md` → *Team Links*.
+
+## Sensitive Content
+
+Files carrying `sensitive: true` in frontmatter — talent maps, calibration packs,
+promotion cases, skip-level notes — hold personal assessments of named people.
+
+1. **Never publish them externally.** `confluence-save` and the `gws-*` write/upload
+   skills refuse them; so does any other outbound path. Only an explicit, per-file
+   instruction from the owner in this conversation overrides that.
+2. **Never paste their contents into a chat tool** or shared channel.
+3. **`doctor` reports path and finding only** — never an excerpt.
+4. **Never invent a rating, placement, or signal.** Gather evidence and cite where it
+   came from; humans decide. An empty cell is the correct output when the record is silent.
+
+Full rules: `.agents/conventions.md` → *Sensitive Content*.
 
 ## Config Substitution
 
@@ -136,6 +174,19 @@ Role tokens are resolved from the active role pack (`.agents/roles/{owner.role}.
 | `experiment` | `03-projects/{slug}/docs/experiments/{name}.md` |
 | `research` | `09-knowledge/research/YYYY-MM-DD-{slug}.md` |
 | `brag-log` | `10-reports/brag-log.md` |
+| `team` | `02-people/teams/{slug}.md` |
+| `portfolio` | `07-strategy/portfolio.md` |
+| `talent-map` | `02-people/talent-map.md` |
+| `calibration` | `02-people/reviews/{cycle}/_calibration.md` |
+| `promo-case` | `02-people/reviews/{cycle}/{slug}-promo.md` |
+| `onboarding-plan` | `02-people/onboarding/{slug}.md` |
+| `headcount` | `06-hiring/headcount-YYYY-QN.md` |
+| `delegation-register` | `07-strategy/delegation-register.md` |
+| `team-health` | `10-reports/YYYY-QN-{team}-health.md` |
+| `exec-brief` | `10-reports/briefs/YYYY-MM-DD-{slug}.md` |
+| `escalation` | `10-reports/escalations/YYYY-MM-DD-{slug}.md` |
+| `qbr` | `10-reports/YYYY-QN-qbr.md` |
+| `reliability-review` | `10-reports/YYYY-QN-reliability.md` |
 
 ---
 
@@ -182,9 +233,12 @@ readers) all operate under this rule.
 
 ## Tag Taxonomy
 
-`#delegate` `#blocked` `#follow-up` `#feedback` `#win` `#risk` `#decision`
+`#delegate` `#blocked` `#follow-up` `#feedback` `#win` `#risk` `#decision` `#escalate`
 
 Use tags inline in prose. Surface `#follow-up` and `#blocked` items when preparing briefings.
+
+Two join tags link a prose line or weekly TODO to an entity where frontmatter isn't
+available: `#project/{slug}` (work) and `#team/{slug}` (org unit).
 
 ---
 
@@ -203,6 +257,15 @@ Use tags inline in prose. Surface `#follow-up` and `#blocked` items when prepari
 | design-doc | `draft` · `review` · `accepted` · `implemented` · `superseded` |
 | brag-log | `active` · `archived` |
 | person | `active` · `on-leave` · `departing` · `departed` |
+| team | `forming` · `active` · `merged` · `dissolved` |
+| portfolio / talent-map / delegation-register | `active` · `archived` |
+| calibration / promo-case | `draft` · `submitted` · `finalized` |
+| onboarding-plan | `draft` · `active` · `completed` |
+| headcount | `planned` · `approved` · `open` · `filled` · `frozen` · `cancelled` |
+| escalation | `open` · `acknowledged` · `resolved` · `dropped` |
+| exec-brief | `draft` · `circulated` · `decided` · `archived` |
+| qbr | `draft` · `circulated` · `final` |
+| team-health / reliability-review | `draft` · `final` |
 
 ---
 
@@ -317,6 +380,26 @@ Skills live in `.agents/skills/` (discoverable by Claude Code via the
 | `/doctor` | Read-only vault health check — flags broken frontmatter, rotted project links, unmapped mentions, misfiled files, and stale dashboards |
 | `/rebuild` | Regenerate all _index.md dashboards |
 | `/emos-update` | Check for and apply emOS framework updates |
+
+Org-layer skills (👥 — written for directors and other leaders of managers; invokable by
+anyone, and inert until the vault has teams):
+
+| Command | Description |
+|---------|-------------|
+| `/team-new <name>` | Register a team — an org unit you lead through its manager |
+| `/team-sync [slug]` | Regenerate team hub rollups and the portfolio hub |
+| `/portfolio` | Load the whole portfolio into one session — teams, work, risks, escalations |
+| `/team-health [slug]` | Assess a team across delivery, quality, morale, hiring, tech health |
+| `/skip-level [name]` | Prep a skip-level, or report skip coverage across the org |
+| `/calibration <cycle>` | Assemble a calibration evidence pack — no invented ratings |
+| `/talent-map` | Placement, promotion candidates, key-person risk, succession |
+| `/promo-case <name>` | Promotion packet — evidence at the target level, gaps, sponsor plan |
+| `/staff-meeting` | Next note in the leadership-team series, carrying actions forward |
+| `/exec-brief <topic>` | One-page decision memo for leadership |
+| `/escalation <topic>` | Escalation record with a specific ask, plus a weekly follow-up |
+| `/headcount [quarter]` | Headcount plan — reqs by team, pipeline, attrition, priorities |
+| `/qbr [quarter]` | Quarterly business review — commitments vs. outcomes, next quarter |
+| `/reliability-review [period]` | Aggregate incident trends and unclosed post-mortem actions |
 
 Provider skills (active based on `config.tools`): `/create-jira-ticket`,
 `/jira-sync`, `/create-github-issue`, `/github-sync`, `/pr-review`,

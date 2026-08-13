@@ -68,3 +68,8 @@ hand-rolling the docs:
 
 Design docs live **inside** the project folder (browsable there); the brag log is a single
 evergreen doc that accumulates across cycles.
+
+**Org-layer skills (marked `roles: [director]`) are available but rarely relevant here.**
+The exceptions worth knowing: `exec-brief` when you need a decision from leadership on a
+technical direction, and `escalation` when something is blocked and you need an
+intervention — both work the same regardless of role.

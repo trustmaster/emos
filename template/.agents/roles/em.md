@@ -38,3 +38,10 @@ In focus: `01-weekly`, `02-people` (profiles, one-on-ones, reviews), `03-project
   work with/through others).
 - **manager-report** — weekly async to your manager: team sentiment, delivery, escalations.
 - **morning / weekly-review** — surface this week's scheduled 1-on-1s and their carry-over.
+
+**Org-layer skills (marked `roles: [director]`) still work for you** — they're written for
+a portfolio but degrade cleanly to one team. Useful ones: `team-health` (a periodic read on
+your own team), `escalation` (a specific ask with impact and fallback), `exec-brief` (a
+one-page decision memo), and `staff-meeting` if you run a recurring sync with leads.
+Registering your team with `/team-new` is optional and mostly pays off if you later grow
+into more than one.

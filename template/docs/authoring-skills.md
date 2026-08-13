@@ -26,6 +26,12 @@ Plain-language, numbered instructions the agent follows top to bottom.
 - **`description`** — this is the trigger. The agent reads it to decide when the
   skill applies, so lead with the action and name the situations/phrases that
   should invoke it. State what `args` means if the skill takes an argument.
+- **`roles:`** *(optional)* — an array of role keys the skill is written for, e.g.
+  `roles: [director]`. A **hint, not a gate**: the skill stays invokable by anyone and
+  agents still run it on request; the key only tells them to de-emphasize it in
+  suggestions when `config.owner.role` isn't listed. Omit it and the skill applies to
+  every role. Because some harnesses may ignore unknown frontmatter keys, name the
+  audience in the `description` too — the shipped org-layer skills do both.
 
 Discovery is automatic: Claude Code finds skills via the `.claude -> .agents`
 symlink. No registration step — creating the directory is enough. (Optionally add

@@ -49,11 +49,15 @@ For every content `.md` in scope:
 - **Missing `type:`** → ERROR. Every file must declare a `type:`.
 - **`type:` not a known content type** (weekly · one-on-one · person · project ·
   decision · incident · hiring-position · candidate · interview ·
-  performance-review · okr · roadmap · meeting · knowledge, plus the import types
+  performance-review · okr · roadmap · meeting · knowledge, plus the org-layer types
+  `team` · `portfolio` · `talent-map` · `calibration` · `promo-case` ·
+  `onboarding-plan` · `headcount` · `delegation-register`, plus the import types
   `confluence-import` · `slack-capture`) → WARN. **Reports are role-variant**: any file under
   `{paths.reports}/` (default `10-reports/`) is a report — its `type:` is the
   active role's report slug (`manager-async`, `snippets`, `product-status`,
-  `program-update`, …), so accept whatever token it carries and never warn on it.
+  `portfolio`, …) or one of the recurring report types (`team-health` · `exec-brief` ·
+  `escalation` · `qbr` · `reliability-review`), so accept whatever token it carries and
+  never warn on it.
 - **Missing `status:`** on a type that has a Status Vocabulary → WARN.
 - **`status:` value not in that type's vocabulary** → ERROR.
 - **Malformed dates** — any `date`/`started`/`updated`/`imported`/etc. field that
@@ -124,11 +128,35 @@ Read `paths.projects` (default `03-projects`).
   GNU/Linux) → INFO.
 - **Unreviewed incident** — an incident whose `status:` is not `reviewed` → INFO.
 
+### H. Team link integrity — ERROR / WARN / INFO
+Read `paths.teams` (default `02-people/teams`). **Skip this check entirely when the
+vault has no team files and no `teams:` keys** — teams are opt-in, and a vault that
+hasn't adopted them is not broken. It must produce zero findings there.
+- **Rotted team link** — any `teams: [slug]` entry or `#team/{slug}` tag whose target
+  `{paths.teams}/{slug}.md` does not exist → ERROR. Report the referencing file and the
+  missing slug.
+- **Missing rollup markers** — a team hub lacking the `<!-- rollup:start -->` /
+  `<!-- rollup:end -->` pair → WARN (`/team-sync` will add it).
+- **Manager without a profile** — a team hub whose `manager:` slug has no
+  `{paths.profiles}/{slug}.md` → WARN. Exempt the vault owner.
+- **Team without a manager** — a team with `status: active` and an empty `manager:` →
+  WARN.
+- **Unattributed work** — an active project with no `teams:` key while other projects
+  have one → INFO (the team rollup will under-report it).
+- **Stale health check** — a team whose `last_health_check` is more than two quarters
+  old, or unset while the team is `active` → INFO, recommend `/team-health`.
+
 ## Output
 
 Group findings by severity, most severe first. For each finding give the file
 (as a clickable relative path with a line number where one applies), a one-line
-description, and the concrete fix. Example shape:
+description, and the concrete fix.
+
+**Sensitive files** — for any file carrying `sensitive: true` in frontmatter (talent
+maps, calibration packs, promo cases), report the *path and the finding only*. Never
+quote or excerpt their contents, not even to illustrate a frontmatter error.
+
+Example shape:
 
 ```
 ## 🔴 Errors (2)

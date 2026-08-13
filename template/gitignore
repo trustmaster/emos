@@ -53,6 +53,14 @@ Session.vim
 # Ephemeral session state; vault behaviour is defined in AGENTS.md / .agents/
 .claude/
 
+# ── Sensitive people content (opt-in) ────────────────────────────────────────
+# Talent maps, calibration packs and promotion cases hold personal assessments of
+# named people (frontmatter `sensitive: true`). They are tracked by default — if your
+# vault lives in a shared repository, uncomment these to keep them local instead.
+# 02-people/talent-map.md
+# 02-people/reviews/*/_calibration.md
+# 02-people/reviews/*/*-promo.md
+
 # ── Logs & scratch ───────────────────────────────────────────────────────────
 *.log
 *.tmp

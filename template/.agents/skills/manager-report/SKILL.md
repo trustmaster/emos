@@ -14,6 +14,9 @@ the role pack at `.agents/roles/{role}.md`. Take `{{role_report_slug}}`, `{{role
 3. Scan this week's 1-on-1 files in `02-people/one-on-ones/*/` — any file whose date falls within the current ISO week. Collect mood signals, shout-outs, and action items. *(Skip or de-emphasize for roles without reports — see the pack note; ICs/PMs lead with their own accomplishments instead.)*
 4. Scan project folders in `03-projects/` (excluding `archive/`) — note milestone status changes, blockers, or cross-team dependencies mentioned this week. Use the `projects:` join key and `#project/{slug}` tags to attribute this week's work (weekly TODOs, meetings, decisions, incidents) to specific projects, so **Delivery & Execution can be grouped by project** rather than as a flat list.
 5. Check `05-incidents/` for any incidents opened or status-changed this week.
+5b. **Org-layer sources — only when they exist**, otherwise skip this step entirely and the report comes out exactly as it always has:
+   - If `paths.teams` (default `02-people/teams`) holds team files, **group Delivery & Execution by team** (via the `teams:` join key) with projects nested beneath, and add each team's current health rating from its hub's newest Health log entry.
+   - If `{paths.reports}/escalations/` holds items with `status: open`, list them under **Needs / Escalations** with their ask, recipient, and `needed_by` date.
 6. Draft `10-reports/YYYY-Www-{{role_report_slug}}.md` (e.g. `-manager-async` for em, `-snippets` for ic) using the template, with the H1 title `{{role_report_title}}`. Populate each section from the sources above, in the voice of the pack's audience (`{{status_report_audience}}`):
    - **TL;DR**: 2-3 sentences synthesizing the week and the one thing needing the reader's attention.
    - **Sentiment / Highlights**: for roles with reports, team mood signals from 1-on-1s; for ICs/PMs, your own `#win` items and shipped highlights.

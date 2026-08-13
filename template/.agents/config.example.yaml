@@ -32,6 +32,9 @@ paths:
   profiles: "02-people/profiles"
   one_on_ones: "02-people/one-on-ones"
   reviews: "02-people/reviews"
+  teams: "02-people/teams"               # optional org layer — see conventions → Team Links.
+                                          # Skills default to this path when the key is absent,
+                                          # so existing vaults need no change.
   projects: "03-projects"                # projects live flat: 03-projects/{slug}/
   projects_archive: "03-projects/archive"
   decisions: "04-decisions"

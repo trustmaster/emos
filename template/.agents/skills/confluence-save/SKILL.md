@@ -11,6 +11,11 @@ Arguments (args): path to the local file (relative to emOS root or absolute).
 Example: `04-decisions/2026-06-08-image-scoring-model.md`
 Example: `05-incidents/2026-06-01-api-outage.md`
 
+0. **Sensitivity check.** If the file's frontmatter carries `sensitive: true` (talent
+   maps, calibration packs, promo cases, and anything else the owner has marked),
+   **refuse to publish it** and say why — this content is personal assessment material
+   that doesn't belong in a wiki. Only an explicit, per-file instruction from the owner
+   in this conversation overrides it. See `.agents/conventions.md` → *Sensitive Content*.
 1. Read the local file at the path given in args.
 2. Confluence coordinates — read from `.agents/config.yaml` → `confluence:`:
    - cloudId: `confluence.cloud_id`

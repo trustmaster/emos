@@ -30,7 +30,7 @@ and follows its **skill notes**. Full pack contract:
 | `em` | Engineering manager (default) | `manager-async` | report | Delivery, Technical, People, Communication, Growth |
 | `ic` | Individual contributor / senior+ | `snippets` | manager | Delivery, Technical, Craft, Collaboration, Growth |
 | `pm` | Product manager | `launch-status` | stakeholder | Product Sense, Execution, Influence, Data, Strategy |
-| `director` | Director / senior leader | `portfolio` | report / skip | Org Impact, Strategy, Talent, Execution, Stakeholder |
+| `director` | Leaders of managers, M2+ (senior manager · head of · director · VP) | `portfolio` | report / skip | Org Impact, Strategy, Talent, Execution, Stakeholder |
 
 **The folder taxonomy is the same for every role.** Packs change what things are
 *called* and which sections you *lean on* — never where files live. Default `em`
@@ -50,6 +50,38 @@ owner:
 That's the whole switch. The next time you run `perf-review`, `manager-report`,
 `1on1`, etc., they resolve the `ic` pack — self-review by default, upward 1-on-1s,
 weekly `snippets` instead of a manager async report.
+
+## Leading through managers
+
+One pack, `director`, covers the whole **M2+** band — senior manager, head of, director,
+senior director, VP. The job's shape is the same at each rung; only the scale changes. It's
+also the pack that leans hardest on emOS's optional **team layer**: registering your teams
+(`/team-new`) turns on the rollups behind `/portfolio`, `/team-health`, `/headcount` and
+calibration-by-manager. That layer is opt-in, and every skill degrades to project- and
+person-level grouping without it.
+
+Org-layer skills carry `roles: [director]` in their frontmatter. That's advisory — see
+below — so an EM can still run `/team-health` on their one team, and a PM can still write
+an `/exec-brief`.
+
+## Skill audience (`roles:`)
+
+Roles tune skills from the *pack* side. The `roles:` frontmatter key tunes discovery from
+the *skill* side:
+
+```yaml
+---
+name: team-health
+description: …
+roles: [director]
+---
+```
+
+It's a **hint, not a gate**. The skill stays invokable by anyone and agents still run it on
+request; the key only tells them to de-emphasize it in suggestions when `owner.role` isn't
+listed. A skill with no `roles:` key applies to every role. If a harness you use ignores
+unknown frontmatter keys, nothing breaks — every shipped skill also names its audience in
+its `description`.
 
 ## Relationships (per-person framing)
 

@@ -63,3 +63,8 @@ of hand-rolling the docs:
 
 PRDs and experiments live **inside** the project folder (browsable there); roadmaps and
 research are cross-cutting and roll up to any project they link.
+
+**Org-layer skills (marked `roles: [director]`) still work for you** where the work spans
+teams: `exec-brief` for a decision memo to leadership, `escalation` for a blocked
+dependency with a named ask, and `qbr` if you present a quarterly readout. `team-health`
+and the talent skills assume you manage the people involved — usually not the case here.
