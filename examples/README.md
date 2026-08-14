@@ -17,6 +17,11 @@ or credentials.
   `_index.md` dashboards — generated summary views.
 - [`.agents/config.yaml`](demo-vault/.agents/config.yaml) — the `tools:`
   capability map wiring Jira/Confluence/Slack/GWS with example coordinates.
+- [`.agents/voice/alex.md`](demo-vault/.agents/voice/alex.md) and its
+  [`samples/`](demo-vault/.agents/voice/samples/) — a **writing voice**: the register emOS
+  uses for files it authors, built from documents Alex wrote personally. This is user
+  content, not framework content: emOS ships the template and the `/voice` skill, never a
+  voice. A shipped voice would be a generic voice, which is the thing it exists to fix.
 - [`import-demo/`](import-demo/) — a public Markdown RFC used to demo `/import-url`:
   import it by URL and watch it get classified, filed, and its owner-assigned
   action items pulled into the current week's plan.

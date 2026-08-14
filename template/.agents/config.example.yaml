@@ -130,6 +130,12 @@ report:
 
 # Agent behavior
 agent:
+  # Your writing voice — register for the files the agent authors (reports,
+  # reviews, docs), NOT for how it talks to you in chat. Personal and never
+  # framework-managed; `emos update` never touches it. Create it with `/voice`.
+  # See docs/voice.md. Any path works; this is just the default.
+  # voice: ".agents/voice/{{owner_slug}}.md"
+
   # When creating files, always use these conventions
   date_format: "YYYY-MM-DD"
   week_format: "YYYY-Www"

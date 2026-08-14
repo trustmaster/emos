@@ -86,6 +86,10 @@ report:
   async_title: "Weekly Async — Payments Platform"
 
 agent:
+  # Alex's writing voice — register for authored files, not for chat replies.
+  # User content: never shipped, never touched by `emos update`. See docs/voice.md.
+  voice: ".agents/voice/alex.md"
+
   date_format: "YYYY-MM-DD"
   week_format: "YYYY-Www"
   slug_style: "kebab-case"

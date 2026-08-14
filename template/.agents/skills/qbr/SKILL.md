@@ -13,6 +13,12 @@ Read `paths.okrs` (default `07-strategy/okrs`), `paths.roadmaps` (default
 `owner.role` from `.agents/config.yaml`. Open the role pack at
 `.agents/roles/{owner.role}.md` for `{{status_report_audience}}`.
 
+**Resolve voice:** read `agent.voice` from `.agents/config.yaml`. If it's set and the file
+exists, read it (plus `samples/` alongside it) and match its register in the file you write.
+Apply it to the artifact only — never to your chat reply or progress narration. If the key is
+absent, write plainly and say nothing; if it's set but the file is missing, say so once and
+write plainly.
+
 > **Start with commitments, not highlights.** A QBR assembled from the best things that
 > happened is a highlight reel; one assembled from what was promised is a review. Build
 > the commitments table first, from the quarter's OKRs and roadmap as they stood at the

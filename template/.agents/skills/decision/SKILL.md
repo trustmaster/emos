@@ -7,6 +7,12 @@ Create a new Architecture Decision Record (ADR).
 
 Decision title: the value of args.
 
+**Resolve voice:** read `agent.voice` from `.agents/config.yaml`. If it's set and the file
+exists, read it (plus `samples/` alongside it) and match its register in the file you write.
+Apply it to the artifact only — never to your chat reply or progress narration. If the key is
+absent, write plainly and say nothing; if it's set but the file is missing, say so once and
+write plainly.
+
 1. List files in 04-decisions/ to find the highest existing ADR number (format: NNNN-slug.md). The new ADR number is that + 1, zero-padded to 4 digits.
 2. Generate a slug from the title (lowercase, hyphen-separated, max 6 words).
 3. Read _templates/decision-record.md.

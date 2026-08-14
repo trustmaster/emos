@@ -37,6 +37,17 @@ Ask, offering current values as defaults:
 
 Do **not** ask about the current quarter — it's derived from today's date.
 
+### Writing voice (optional, offer once)
+
+After the role is settled, *offer* — don't assume: "Want emOS to write in your voice
+rather than its default? I can set that up from a few documents you've written." If yes,
+run `voice`. If they skip or seem unsure, leave `agent.voice` unset (the silent no-op
+default) and mention `/voice` is there whenever they want it.
+
+Two things to state if they ask what it does: it styles the **files** emOS writes, not how
+it talks in chat, and the voice file is personal content that `emos update` never touches.
+Don't sell it beyond that. See `docs/voice.md`.
+
 ## Step 2 — People (optional)
 
 Tailor the prompt to `owner.role` — ask for the people that role actually tracks:
@@ -128,5 +139,6 @@ later**:
 - Structured settings → `.agents/config.yaml` (or just re-run this skill).
 - Personal prose → `CONFIG.md`.
 - Naming/tagging conventions → `.agents/conventions.md`.
+- Writing voice for authored files → `/voice` (or `.agents/voice/{owner.slug}.md` directly).
 
 Suggest `/rebuild` only if paths changed.

@@ -5,6 +5,12 @@ description: Create the planning file for the current week, carrying forward ope
 
 Create the planning file for the current week.
 
+**Resolve voice:** read `agent.voice` from `.agents/config.yaml`. If it's set and the file
+exists, read it (plus `samples/` alongside it) and match its register in the file you write.
+Apply it to the artifact only — never to your chat reply or progress narration. If the key is
+absent, write plainly and say nothing; if it's set but the file is missing, say so once and
+write plainly.
+
 1. Run `date +%G-W%V` to get the current ISO week (e.g. 2026-W24). Do not infer it from the date. (This form is portable across macOS/BSD and GNU/Linux.) Check whether 01-weekly/YYYY-Www.md already exists. If it does, say so and stop — do not overwrite it.
 2. Read the most recent weekly file in 01-weekly/ (highest week number before the current one). If it has `status: active`, update it to `status: completed` now (before creating the new file).
 3. From that file, collect all unchecked `- [ ]` items and any `#follow-up` tags — these are the carry-forward items. **Preserve any `#project/{slug}` tags on these lines verbatim** so carried tasks stay linked to their projects (this is what keeps them in the project hubs' Open TODOs rollup).

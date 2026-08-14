@@ -68,6 +68,13 @@ existing provider. See [docs/integrations.md](docs/integrations.md).
   across macOS / Linux / Windows.
 - **Keep the ownership boundary honest.** If you add a framework file, add it to
   `template/.emos/manifest` so updates manage it; if it's user content, don't.
+- **Never ship a framework file under a path users author into.** The inverse of the rule
+  above, and the one that can destroy work. `syncFrom` walks the *source*, so an unshipped
+  directory is safe by omission — but a user-created file has no hash in `.emos/version`,
+  so it skips the `.emos-new` conflict branch and gets overwritten outright the moment
+  upstream occupies its path. `.agents/voice/**` is the current example: it's protected
+  with a `-` line, so anything a user needs there (templates, READMEs) ships from
+  `_templates/` and is copied out by a skill.
 - **Small, focused PRs** with a clear description of the change and why.
 
 ## Reporting issues

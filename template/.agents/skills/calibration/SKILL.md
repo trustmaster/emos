@@ -11,6 +11,14 @@ Read `paths.profiles` (default `02-people/profiles`), `paths.reviews` (default
 `paths.teams` (default `02-people/teams`), and `owner.role` from `.agents/config.yaml`.
 Open the role pack at `.agents/roles/{owner.role}.md` for `{{review_dimensions}}`.
 
+**Resolve voice:** read `agent.voice` from `.agents/config.yaml`. If it's set and the file
+exists, read it (plus `samples/` alongside it) and match its register in the file you write.
+Apply it to the artifact only — never to your chat reply or progress narration. If the key is
+absent, write plainly and say nothing; if it's set but the file is missing, say so once and
+write plainly.
+Voice governs the narrative sections only. It never softens, embellishes, or reshapes an
+evidence cell.
+
 > **The hard rule, same as `perf-review`: never invent, propose, or infer a rating.**
 > You gather evidence and surface inconsistencies. Humans decide in the room. If a
 > manager has already submitted a proposed direction, record it verbatim as *theirs* and

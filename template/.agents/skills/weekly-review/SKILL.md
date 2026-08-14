@@ -5,6 +5,12 @@ description: Run the end-of-week review — tally task completion, scan 1-on-1s/
 
 Run the weekly review for the current week.
 
+**Resolve voice:** read `agent.voice` from `.agents/config.yaml`. If it's set and the file
+exists, read it (plus `samples/` alongside it) and match its register in the file you write.
+Apply it to the artifact only — never to your chat reply or progress narration. If the key is
+absent, write plainly and say nothing; if it's set but the file is missing, say so once and
+write plainly.
+
 1. Find the current active weekly file in 01-weekly/ (status: active).
 2. Read it fully. Count:
    - Total tasks

@@ -38,9 +38,15 @@ rebuild at this level.
 
 If you add a new framework file under `template/`, you **must** add its vault-relative path
 (or a glob) to `template/.emos/manifest` — otherwise `emos update` won't manage it in
-existing vaults. Conversely, never add user-content paths to the manifest. The two lines
-prefixed `-` in the manifest (`config.yaml`, `settings.local.json`) are protected: real
-user config that the updater never overwrites.
+existing vaults. Conversely, never add user-content paths to the manifest. Lines prefixed
+`-` are protected exceptions: real user content (`config.yaml`, `settings.local.json`,
+`.agents/voice/**`) that the updater never overwrites.
+
+The inverse rule matters just as much: **never ship a framework file under a path users
+author into.** `syncFrom` walks the *source*, so an unshipped directory is safe — but a
+user-created file has no hash in `.emos/version`, which means it skips the `.emos-new`
+conflict branch and gets overwritten outright the moment upstream occupies its path. The
+protected globs exist to make that collision impossible.
 
 ## Local development
 

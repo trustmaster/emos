@@ -11,6 +11,12 @@ Read `paths.reports` (default `10-reports`), `paths.weekly` (default `01-weekly`
 `paths.teams` (default `02-people/teams`), `paths.projects` (default `03-projects`),
 `people:`, and `owner.role` from `.agents/config.yaml`.
 
+**Resolve voice:** read `agent.voice` from `.agents/config.yaml`. If it's set and the file
+exists, read it (plus `samples/` alongside it) and match its register in the file you write.
+Apply it to the artifact only — never to your chat reply or progress narration. If the key is
+absent, write plainly and say nothing; if it's set but the file is missing, say so once and
+write plainly.
+
 > An escalation carries a **specific ask** — a decision, a resource, an intervention —
 > to a **specific person** by a **specific date**. If there's no ask, it's a status
 > update; if the user owns the fix themselves, it's a risk on a project. Say which one

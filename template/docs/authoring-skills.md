@@ -60,6 +60,29 @@ The body is instructions, not code. Keep them concrete and ordered.
 - **Confirm before side effects.** For anything hard to reverse (moves, deletes,
   publishing externally), present the plan and wait for a yes.
 
+## If your skill authors prose
+
+A skill that writes a document for a human reader — a report, a review, a record, a design
+doc — should honour the owner's [writing voice](voice.md). Paste this block after your
+config reads and before the first step:
+
+```markdown
+**Resolve voice:** read `agent.voice` from `.agents/config.yaml`. If it's set and the file
+exists, read it (plus `samples/` alongside it) and match its register in the file you write.
+Apply it to the artifact only — never to your chat reply or progress narration. If the key is
+absent, write plainly and say nothing; if it's set but the file is missing, say so once and
+write plainly.
+```
+
+Two things it deliberately does **not** do. It never fails the skill when the file is
+missing (a half-written report is worse than an unstyled one), and it never styles the
+agent's own chat output — voice is for artifacts, not conversation.
+
+Skills that emit **structured views** (`rebuild`, `project-sync`, the `*-sync` generators)
+or that file content the owner didn't write (`capture`, `inbox`, `import-url`, which must
+preserve it verbatim) leave this out. So does anything that reports to chat rather than
+writing a file.
+
 ## Two kinds of skills
 
 **Workflow skills** are tool-agnostic and orchestrate the vault (`1on1`,

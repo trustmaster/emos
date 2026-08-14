@@ -10,6 +10,12 @@ Read `paths.incidents` (default `05-incidents`), `paths.teams` (default
 `02-people/teams`), `paths.reports` (default `10-reports`), `paths.projects` (default
 `03-projects`), and `owner.role` from `.agents/config.yaml`.
 
+**Resolve voice:** read `agent.voice` from `.agents/config.yaml`. If it's set and the file
+exists, read it (plus `samples/` alongside it) and match its register in the file you write.
+Apply it to the artifact only — never to your chat reply or progress narration. If the key is
+absent, write plainly and say nothing; if it's set but the file is missing, say so once and
+write plainly.
+
 If `{paths.incidents}/` has no files in the period, say so plainly and stop — an empty
 quarter is a result, not an error, though it's worth asking whether incidents are being
 recorded at all.

@@ -60,6 +60,9 @@ Session.vim
 # 02-people/talent-map.md
 # 02-people/reviews/*/_calibration.md
 # 02-people/reviews/*/*-promo.md
+# Writing samples under .agents/voice/samples/ are excerpts of your own documents —
+# they may quote performance or people content. The voice file itself is fine to track.
+# .agents/voice/samples/
 
 # ── Logs & scratch ───────────────────────────────────────────────────────────
 *.log

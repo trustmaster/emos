@@ -32,3 +32,8 @@ docs/**
 
 - .agents/config.yaml
 - .agents/settings.local.json
+
+# Voice files and writing samples are user content.
+# These lines guard against a future path collision
+- .agents/voice/**
+- .agents/output-styles/**

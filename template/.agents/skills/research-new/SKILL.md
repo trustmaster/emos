@@ -8,6 +8,12 @@ Create a user-research note in the knowledge base.
 Read `paths.knowledge_research` (default `09-knowledge/research`), `paths.projects` (default
 `03-projects`), and `owner.slug` from `.agents/config.yaml`.
 
+**Resolve voice:** read `agent.voice` from `.agents/config.yaml`. If it's set and the file
+exists, read it (plus `samples/` alongside it) and match its register in the file you write.
+Apply it to the artifact only — never to your chat reply or progress narration. If the key is
+absent, write plainly and say nothing; if it's set but the file is missing, say so once and
+write plainly.
+
 1. Determine the study topic from args and generate a slug (lowercase, hyphen-separated, max 6
    words).
 2. **Resolve project association (optional).** If args names a project (or one obviously

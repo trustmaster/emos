@@ -25,6 +25,13 @@ A role-sensitive skill never hardcodes manager/report/team language. It reads
 and follows its **skill notes**. Full pack contract:
 [`.agents/roles/README.md`](../.agents/roles/README.md).
 
+**Roles and voice are different axes, and they compose.** A role pack changes *what things
+are called* — report vs. stakeholder, snippets vs. async update, which review dimensions
+apply. A [voice file](voice.md) changes *how sentences are built* — word choice, sentence
+shape, formatting habits, a ban list. Role generalizes across everyone doing that job,
+which is why packs ship; register doesn't generalize across people, which is why a voice
+never ships. Keep them separate: role vocabulary belongs in a pack, not in your voice file.
+
 | Role key | For | Report slug | 1-on-1 default | Review dimensions |
 |----------|-----|-------------|----------------|-------------------|
 | `em` | Engineering manager (default) | `manager-async` | report | Delivery, Technical, People, Communication, Growth |

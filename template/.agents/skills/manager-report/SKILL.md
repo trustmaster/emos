@@ -9,6 +9,12 @@ Draft and save the weekly status report for the current week, formatted for your
 the role pack at `.agents/roles/{role}.md`. Take `{{role_report_slug}}`, `{{role_report_title}}`,
 `{{status_report_audience}}`, and the manager-report skill note from the pack.
 
+**Resolve voice:** read `agent.voice` from `.agents/config.yaml`. If it's set and the file
+exists, read it (plus `samples/` alongside it) and match its register in the file you write.
+Apply it to the artifact only — never to your chat reply or progress narration. If the key is
+absent, write plainly and say nothing; if it's set but the file is missing, say so once and
+write plainly.
+
 1. Determine today's ISO week (e.g. 2026-W23). Find `01-weekly/YYYY-Www.md` — it may be `status: active` or `status: completed`. Read it fully.
 2. Read `_templates/manager-async.md`.
 3. Scan this week's 1-on-1 files in `02-people/one-on-ones/*/` — any file whose date falls within the current ISO week. Collect mood signals, shout-outs, and action items. *(Skip or de-emphasize for roles without reports — see the pack note; ICs/PMs lead with their own accomplishments instead.)*

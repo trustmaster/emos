@@ -101,6 +101,13 @@ Set it via `/configure` (or edit the field), and switch anytime. A person's
 `relation:` (`report`/`manager`/`peer`/`stakeholder`) refines framing per person.
 Add your own role in a few lines — see **[docs/roles.md](docs/roles.md)**.
 
+**Role is what things are called. Voice is how sentences are built.** A separate optional
+key, `agent.voice`, points at a writing-voice file so authored files sound like *you*
+rather than like an agent — word choice, sentence shape, formatting habits, a ban list.
+It styles the **files** emOS writes, never how it talks to you in chat. emOS ships the
+template and the `/voice` skill but never a voice, because a shipped voice is a generic
+voice. See **[docs/voice.md](docs/voice.md)**.
+
 ## Typical workflows
 
 You drive emOS by just **talking to your agent in plain language**. Each skill
@@ -275,6 +282,7 @@ until the vault has teams)
 | Skill | What it does |
 |-------|--------------|
 | `/configure` | Interactive setup/update of owner, team, people, and tools (don't hand-edit YAML) |
+| `/voice` | Set up your writing voice for authored files; pass a path or URL to add a writing sample |
 | `/doctor` | Read-only health check — broken frontmatter, rotted project links, unmapped mentions, stale dashboards |
 | `/rebuild` | Regenerate all `_index.md` dashboards |
 | `/emos-update` | Check for and apply framework updates |
@@ -355,6 +363,7 @@ npx emos-vault update-head --ref dev  # or a specific branch
 
 - **Add a tool:** [docs/integrations.md](docs/integrations.md)
 - **Change or add a role:** [docs/roles.md](docs/roles.md)
+- **Set your writing voice:** [docs/voice.md](docs/voice.md)
 - **Write a skill:** [docs/authoring-skills.md](docs/authoring-skills.md)
 - **Conventions:** `.agents/conventions.md`
 - **Agent entry point:** `AGENTS.md`
