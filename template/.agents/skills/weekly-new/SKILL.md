@@ -5,11 +5,8 @@ description: Create the planning file for the current week, carrying forward ope
 
 Create the planning file for the current week.
 
-**Resolve voice:** read `agent.voice` from `.agents/config.yaml`. If it's set and the file
-exists, read it (plus `samples/` alongside it) and match its register in the file you write.
-Apply it to the artifact only — never to your chat reply or progress narration. If the key is
-absent, write plainly and say nothing; if it's set but the file is missing, say so once and
-write plainly.
+**Voice:** if `agent.voice` is set, match the owner's register in the file you write — not in
+your chat reply. See AGENTS.md → *Writing Voice*.
 
 1. Run `date +%G-W%V` to get the current ISO week (e.g. 2026-W24). Do not infer it from the date. (This form is portable across macOS/BSD and GNU/Linux.) Check whether 01-weekly/YYYY-Www.md already exists. If it does, say so and stop — do not overwrite it.
 2. Read the most recent weekly file in 01-weekly/ (highest week number before the current one). If it has `status: active`, update it to `status: completed` now (before creating the new file).

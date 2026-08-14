@@ -63,20 +63,19 @@ The body is instructions, not code. Keep them concrete and ordered.
 ## If your skill authors prose
 
 A skill that writes a document for a human reader — a report, a review, a record, a design
-doc — should honour the owner's [writing voice](voice.md). Paste this block after your
+doc — should honour the owner's [writing voice](voice.md). Add this pointer after your
 config reads and before the first step:
 
 ```markdown
-**Resolve voice:** read `agent.voice` from `.agents/config.yaml`. If it's set and the file
-exists, read it (plus `samples/` alongside it) and match its register in the file you write.
-Apply it to the artifact only — never to your chat reply or progress narration. If the key is
-absent, write plainly and say nothing; if it's set but the file is missing, say so once and
-write plainly.
+**Voice:** if `agent.voice` is set, match the owner's register in the file you write — not in
+your chat reply. See AGENTS.md → *Writing Voice*.
 ```
 
-Two things it deliberately does **not** do. It never fails the skill when the file is
-missing (a half-written report is worse than an unstyled one), and it never styles the
-agent's own chat output — voice is for artifacts, not conversation.
+The contract itself lives in `AGENTS.md` → *Writing Voice* and is stated once: what to do
+when the key is absent (write plainly, silently), when the file is missing (say so once,
+then write plainly), and the rule that voice styles artifacts and never the agent's own
+chat output. Don't restate it in the skill — a pointer keeps the trigger next to the task
+while leaving one place to change the wording.
 
 Skills that emit **structured views** (`rebuild`, `project-sync`, the `*-sync` generators)
 or that file content the owner didn't write (`capture`, `inbox`, `import-url`, which must

@@ -12,13 +12,8 @@ Read `paths.profiles` (default `02-people/profiles`), `paths.teams` (default
 `paths.reviews` (default `02-people/reviews`), and `owner.role` from
 `.agents/config.yaml`.
 
-**Resolve voice:** read `agent.voice` from `.agents/config.yaml`. If it's set and the file
-exists, read it (plus `samples/` alongside it) and match its register in the file you write.
-Apply it to the artifact only — never to your chat reply or progress narration. If the key is
-absent, write plainly and say nothing; if it's set but the file is missing, say so once and
-write plainly.
-Voice governs the narrative sections only. It never softens, embellishes, or reshapes an
-evidence cell.
+**Voice:** if `agent.voice` is set, match the owner's register in the file you write — not in
+your chat reply. See AGENTS.md → *Writing Voice*. Narrative sections only; never an evidence cell.
 
 > **Evidence only.** Every placement, risk, and signal must trace to something written
 > in the vault, and you cite where. If the record doesn't support a cell, leave it empty

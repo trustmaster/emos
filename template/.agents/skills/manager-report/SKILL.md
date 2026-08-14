@@ -9,11 +9,8 @@ Draft and save the weekly status report for the current week, formatted for your
 the role pack at `.agents/roles/{role}.md`. Take `{{role_report_slug}}`, `{{role_report_title}}`,
 `{{status_report_audience}}`, and the manager-report skill note from the pack.
 
-**Resolve voice:** read `agent.voice` from `.agents/config.yaml`. If it's set and the file
-exists, read it (plus `samples/` alongside it) and match its register in the file you write.
-Apply it to the artifact only — never to your chat reply or progress narration. If the key is
-absent, write plainly and say nothing; if it's set but the file is missing, say so once and
-write plainly.
+**Voice:** if `agent.voice` is set, match the owner's register in the file you write — not in
+your chat reply. See AGENTS.md → *Writing Voice*.
 
 1. Determine today's ISO week (e.g. 2026-W23). Find `01-weekly/YYYY-Www.md` — it may be `status: active` or `status: completed`. Read it fully.
 2. Read `_templates/manager-async.md`.
