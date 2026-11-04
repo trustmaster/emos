@@ -1,0 +1,129 @@
+# Swimlane roadmap data for Checkout Reliability (fictional demo).
+# Render with:
+#   python3 _tools/roadmap_render.py \
+#       --data 03-projects/checkout-reliability/roadmap.toml \
+#       --out 10-reports/assets
+# Format reference: _templates/roadmap.toml and docs/roadmap-view.md.
+
+title = "Checkout Reliability"
+week = "2026-W29"
+issue = 4
+horizon = ["2026-W25", "2026-W33"]
+today = "2026-07-15"
+epic = "https://acme.atlassian.net/browse/PAY-1200"
+epic_label = "PAY-1200 · all checkout reliability work"
+
+[[milestones]]
+name = "Retry freeze"
+date = "2026-07-01"
+
+[[milestones]]
+name = "SLA review"
+date = "2026-07-31"
+
+[[lanes]]
+name = "Resilience"
+note = "Make provider retries safe and bounded"
+
+  [[lanes.packages]]
+  name = "Idempotency keys"
+  start = "2026-W25"
+  end = "2026-W27"
+  status = "done"
+  percent = 100
+  done = 6
+  total = 6
+  projection = "Shipped 3 Jul, confirmed in production 6 Jul"
+  note = "Retries no longer double-charge; ADR-0001 accepted."
+  history = [
+    { week = "2026-W26", percent = 50 },
+    { week = "2026-W27", percent = 100 },
+    { week = "2026-W28", percent = 100 },
+    { week = "2026-W29", percent = 100 },
+  ]
+
+  [[lanes.packages]]
+  name = "Backpressure and timeouts"
+  start = "2026-W27"
+  end = "2026-W30"
+  status = "active"
+  percent = 60
+  done = 3
+  total = 5
+  projection = "End of July, gated on the provider rate-limit test"
+  note = "Client-side limits merged; load test scheduled."
+  history = [
+    { week = "2026-W26", percent = 0 },
+    { week = "2026-W27", percent = 10 },
+    { week = "2026-W28", percent = 35 },
+    { week = "2026-W29", percent = 60 },
+  ]
+
+[[lanes]]
+name = "Observability"
+note = "See slow burns before customers do"
+
+  [[lanes.packages]]
+  name = "Latency and error dashboard"
+  start = "2026-W26"
+  end = "2026-W28"
+  status = "done"
+  percent = 100
+  done = 4
+  total = 4
+  projection = "Live since 10 Jul"
+  note = "P99 and error rate per provider at 1-minute resolution."
+  history = [
+    { week = "2026-W26", percent = 30 },
+    { week = "2026-W27", percent = 70 },
+    { week = "2026-W28", percent = 100 },
+    { week = "2026-W29", percent = 100 },
+  ]
+
+  [[lanes.packages]]
+  name = "Burn-rate alerting"
+  start = "2026-W28"
+  end = "2026-W31"
+  status = "at-risk"
+  percent = 25
+  done = 1
+  total = 4
+  projection = "Early August if on-call rota is agreed this week"
+  note = "Blocked on the paging policy decision."
+  history = [
+    { week = "2026-W26", percent = 0 },
+    { week = "2026-W27", percent = 0 },
+    { week = "2026-W28", percent = 10 },
+    { week = "2026-W29", percent = 25 },
+  ]
+
+[[lanes]]
+name = "Rollout"
+
+  [[lanes.packages]]
+  name = "Canary to 5% of traffic"
+  start = "2026-W30"
+  end = "2026-W31"
+  status = "planned"
+  percent = 0
+  projection = "Week of 20 Jul, after load test passes"
+  history = [
+    { week = "2026-W26", percent = 0 },
+    { week = "2026-W27", percent = 0 },
+    { week = "2026-W28", percent = 0 },
+    { week = "2026-W29", percent = 0 },
+  ]
+
+  [[lanes.packages]]
+  name = "Full rollout and SLA check"
+  start = "2026-W32"
+  end = "2026-W33"
+  status = "planned"
+  percent = 0
+  projection = "not scheduled"
+  history = [
+    { week = "2026-W26", percent = 0 },
+    { week = "2026-W27", percent = 0 },
+    { week = "2026-W28", percent = 0 },
+    { week = "2026-W29", percent = 0 },
+  ]

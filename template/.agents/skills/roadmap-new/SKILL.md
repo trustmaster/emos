@@ -35,5 +35,10 @@ your chat reply. See AGENTS.md → *Writing Voice*.
 6. Add `- [ ] Fill in roadmap: {title} #follow-up` to the current week's active file in
    `01-weekly/`.
 
+7. Optional: if the user wants a visual swimlane (Gantt-style) view of a project's work
+   packages, copy `_templates/roadmap.toml` to `{paths.projects}/{project}/roadmap.toml`, fill
+   it in, and render it with `python3 _tools/roadmap_render.py --data <file> --out
+   10-reports/assets` (`--check` validates first). Don't do this unasked.
+
 Output the created file path. If `projects:` was set, note it will surface in those hubs on the
 next `project-sync`.

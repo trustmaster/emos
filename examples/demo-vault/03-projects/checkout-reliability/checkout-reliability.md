@@ -32,6 +32,12 @@ payment-provider retries and missing backpressure. Error rate during spikes hit
 2. **Backpressure + timeouts** on the provider client.
 3. **Observability**: a latency/error dashboard and alerting before customers notice.
 
+## Roadmap
+
+![Checkout Reliability roadmap, 2026-W29](../../10-reports/assets/roadmap-2026-W29.svg)
+
+Data: [`roadmap.toml`](roadmap.toml) · [detail view](../../10-reports/assets/roadmap-2026-W29.html)
+
 ## Risks & Blockers
 
 | Risk / Blocker | Impact | Mitigation | Owner |

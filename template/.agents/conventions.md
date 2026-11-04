@@ -48,6 +48,9 @@ This file is the single source of truth for naming, tagging, and status vocabula
   `stakeholder` · `skip`) — your relationship to that person, from the owner's point of
   view. Role-sensitive skills (e.g. `1on1`) read it to choose the right framing. Absent ⇒
   treated as `report`.
+- **Pronouns**: a profile may carry `pronouns:` (e.g. `she/her`, `they/them`). Use it for
+  every prose reference to that person. Blank or absent ⇒ they/them; never infer pronouns
+  from a name.
 
 ## Tag Taxonomy
 

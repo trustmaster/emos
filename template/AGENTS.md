@@ -37,8 +37,9 @@ This vault is a pure Markdown knowledge system. There is no code, no build syste
 _templates/       Source templates for all file types
 _attic/           Archived/optional material excluded from the active framework
 docs/             Human-facing guides (adding tools, authoring skills)
+_tools/           Optional helper scripts (e.g. roadmap_render.py)
 .agents/          config.yaml (owner, people map, paths, org context), conventions.md,
-                  skills/, integrations/ (provider adapters), commands/,
+                  skills/, integrations/ (provider adapters), commands/, roles/,
                   settings.local.json (personal, not framework-managed)
 .agents/voice/    owner's writing voice + samples/ (personal, not framework-managed)
 .claude/          symlink -> .agents/, so Claude Code discovers skills/commands unchanged
@@ -136,6 +137,9 @@ Resolve `@Mentions` using `.agents/config.yaml` → `people:` map. Each entry ma
 `@FirstName` to a lowercase slug; the profile lives at
 `02-people/profiles/{slug}.md`. If a mention isn't in the map, ask before
 creating a new profile.
+
+If the profile has a `pronouns:` value, use it whenever you refer to that person in prose. If
+it is blank or absent, use they/them — never infer pronouns from a name.
 
 ---
 

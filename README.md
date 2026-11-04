@@ -231,7 +231,7 @@ they stay invokable by any role, they're just de-emphasized when they don't fit 
 |-------|--------------|
 | `/prd-new <title>` | PRD in a project's `docs/` — problem, goals, requirements, metrics, rollout |
 | `/experiment-new <name>` | A-B test brief — hypothesis, primary + guardrail metrics, variants, sizing, results log |
-| `/roadmap-new <horizon>` | Now / Next / Later roadmap in `07-strategy/roadmaps/`; links projects to roll up |
+| `/roadmap-new <horizon>` | Now / Next / Later roadmap in `07-strategy/roadmaps/`; links projects to roll up; optional swimlane chart via `_tools/roadmap_render.py` |
 | `/research-new <topic>` | User-research / interview-synthesis note in `09-knowledge/research/` (PII-free) |
 
 **Leading through managers** (👥 — written for `director`; invokable by any role, inert
@@ -363,6 +363,7 @@ npx emos-vault update-head --ref dev  # or a specific branch
 
 - **Add a tool:** [docs/integrations.md](docs/integrations.md)
 - **Change or add a role:** [docs/roles.md](docs/roles.md)
+- **Draw a swimlane roadmap:** [docs/roadmap-view.md](docs/roadmap-view.md)
 - **Set your writing voice:** [docs/voice.md](docs/voice.md)
 - **Write a skill:** [docs/authoring-skills.md](docs/authoring-skills.md)
 - **Conventions:** `.agents/conventions.md`
