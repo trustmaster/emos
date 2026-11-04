@@ -1,0 +1,51 @@
+README.md
+  s_575ff64f786fb6::t_2c6ba3a2f47e10 234
+  s_575ff64f786fb6::t_5d8d9731999ec2 366
+examples/demo-vault/10-reports/assets/roadmap-2026-W29.svg
+  s_575ff64f786fb6::t_e313fdd1d63287 1-136
+examples/demo-vault/03-projects/checkout-reliability/roadmap.toml
+  s_575ff64f786fb6::t_e313fdd1d63287 1-129
+template/AGENTS.md
+  s_575ff64f786fb6::t_af6bb6a2527ad9 40,42,141-142
+  s_575ff64f786fb6::t_dda5bf56f2e981 143
+template/_templates/person-profile.md
+  s_575ff64f786fb6::t_af6bb6a2527ad9 11-12
+examples/demo-vault/03-projects/checkout-reliability/checkout-reliability.md
+  s_575ff64f786fb6::t_5d8d9731999ec2 35-40
+examples/README.md
+  s_575ff64f786fb6::t_5d8d9731999ec2 16-20
+template/docs/roadmap-view.md
+  s_575ff64f786fb6::t_6a58ef1e1caec5 13,42-43
+  s_575ff64f786fb6::t_09556c99eed68c 1-12,14-41,44-93
+template/.agents/conventions.md
+  s_575ff64f786fb6::t_5eca8e9baa8265 51-53
+template/.agents/skills/roadmap-new/SKILL.md
+  s_575ff64f786fb6::t_5eca8e9baa8265 38-42
+template/_tools/roadmap_render.py
+  s_575ff64f786fb6::t_360ff79c157b29 494
+  s_575ff64f786fb6::t_46eeabaae90e65 1-4,6-16,18-22,25-114,120-190,192-335,337-358,360-456,458-475,478-490,492-493,495-528,530-553,568-639,641-649
+  s_575ff64f786fb6::t_d01d7070eab077 5,17,23-24,115-119,191,336,359,457,476-477,491,529,554-567,640
+template/_templates/roadmap.toml
+  s_575ff64f786fb6::t_46eeabaae90e65 2,5-9,15-16,19-20,23-26,28-31,34-44,46-48,50-73,75-76,78-85
+  s_575ff64f786fb6::t_8694ea7d37285e 1,3-4,10-14,17-18,21-22,27,32-33,45,49,74,77
+examples/demo-vault/10-reports/assets/roadmap-2026-W29.html
+  s_575ff64f786fb6::t_e313fdd1d63287 1-177
+template/.emos/manifest
+  s_575ff64f786fb6::t_af6bb6a2527ad9 30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "dd97745a6bce3a7683c46ecfcc7a5ee70171d036",
+  "prompts": {},
+  "sessions": {
+    "s_575ff64f786fb6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ef3b04d3-1749-41e1-bdca-43dbf053ad8d",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Vladimir Sibirov <trustmaster@kodigy.com>"
+    }
+  }
+}
