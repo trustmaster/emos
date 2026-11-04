@@ -1,0 +1,85 @@
+# Swimlane roadmap data, rendered to SVG / HTML / PNG by _tools/roadmap_render.py.
+#
+# One file per project, kept as the single source of truth across status updates.
+# Update it each time you report progress, then render:
+#
+#   python3 _tools/roadmap_render.py \
+#       --data 03-projects/<project>/roadmap.toml \
+#       --out 10-reports/assets
+#
+# That writes roadmap-<week>.svg, .html and .png next to each other. The PNG is for chat
+# tools that don't preview SVG, the HTML is a linked detail view, the SVG is what the
+# vault embeds. Use --check to validate the file without writing anything.
+# Needs Python 3.11+. PNG output uses rsvg-convert, ImageMagick or Chrome/Chromium if
+# one is installed; otherwise pass --formats svg,html.
+
+title = "{{PROJECT TITLE}}"
+week = "{{2026-W35}}"                    # the ISO week this snapshot belongs to
+issue = {{7}}                            # optional: report / issue number, shown in the subtitle
+horizon = ["{{2026-W30}}", "{{2026-W40}}"]  # first and last column of the grid
+today = "{{2026-08-26}}"                 # omit to use the real current date
+epic = "{{https://tracker.example.com/browse/EPIC-1}}"  # optional: link shown above the chart
+epic_label = "Tracking epic"             # optional: text of that link
+
+# Milestones draw a diamond above the grid and a dashed line through it.
+# Keep to the few dates a reader outside the team would put in their calendar.
+[[milestones]]
+name = "{{Beta release}}"
+date = "{{2026-08-27}}"
+
+# ---------------------------------------------------------------------------
+# Swimlanes. One per direction. Keep lane names and package names stable between
+# snapshots, that is what makes the grid readable over time. Regroup only when the work
+# actually regrouped, and say so in your status update.
+#
+# Per package:
+#   start / end  ISO weeks the package spans. For finished work this is when it ran;
+#                for planned work it is the projection. This is the whole point of the
+#                view, so put a real window on every row, never a placeholder.
+#   status       done | active | planned | at-risk | paused
+#   percent      completion, 0-100. Drives the bar fill and the sparkline.
+#   done/total   optional ticket counts, rendered as "60% (12/20)"
+#   projection   short text for the detail table: date plus the qualifier that makes it
+#                honest (tested / confirmed in production / gated on X), or "not scheduled"
+#   note         one line of detail for the detail table, not for the chart
+#   history      completion at each past snapshot, oldest first. Same length on every row.
+# ---------------------------------------------------------------------------
+
+[[lanes]]
+name = "{{Discovery}}"
+note = "{{optional one-line lane summary}}"
+
+  [[lanes.packages]]
+  name = "{{Work package}}"
+  start = "{{2026-W31}}"
+  end = "{{2026-W34}}"
+  status = "done"
+  percent = 100
+  done = 8
+  total = 8
+  projection = "{{Completed 14 Aug, confirmed in production 17 Aug}}"
+  note = "{{what it delivered}}"
+  history = [
+    { week = "2026-W31", percent = 40 },
+    { week = "2026-W33", percent = 75 },
+    { week = "2026-W35", percent = 100 },
+  ]
+
+  [[lanes.packages]]
+  name = "{{Work package}}"
+  start = "{{2026-W35}}"
+  end = "{{2026-W38}}"
+  status = "active"
+  percent = 30
+  projection = "{{mid-September, gated on the design decision}}"
+
+[[lanes]]
+name = "{{Delivery}}"
+
+  [[lanes.packages]]
+  name = "{{Work package}}"
+  start = "{{2026-W36}}"
+  end = "{{2026-W40}}"
+  status = "planned"
+  percent = 0
+  projection = "not scheduled"

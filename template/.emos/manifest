@@ -27,6 +27,7 @@ emos.cmd
 .agents/commands/**
 _templates/**
 docs/**
+_tools/roadmap_render.py
 .emos/emos.mjs
 .emos/manifest
 

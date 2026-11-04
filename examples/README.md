@@ -13,6 +13,11 @@ or credentials.
   — a project **hub**: human-written sections up top, then a generated
   `Related` rollup linking every meeting, decision, incident, and person tied to
   the project via the `projects:` join key.
+- [`03-projects/checkout-reliability/roadmap.toml`](demo-vault/03-projects/checkout-reliability/roadmap.toml)
+  — the data behind the **swimlane roadmap** embedded in that hub, rendered to
+  [SVG](demo-vault/10-reports/assets/roadmap-2026-W29.svg) and
+  [HTML](demo-vault/10-reports/assets/roadmap-2026-W29.html) by `_tools/roadmap_render.py`.
+  See [`docs/roadmap-view.md`](../template/docs/roadmap-view.md).
 - [`03-projects/_index.md`](demo-vault/03-projects/_index.md) and the other
   `_index.md` dashboards — generated summary views.
 - [`.agents/config.yaml`](demo-vault/.agents/config.yaml) — the `tools:`

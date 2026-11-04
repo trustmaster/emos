@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checkout Reliability · 2026-W29</title>
+<style>
+  :root { color-scheme: light; }
+  body { margin:0; padding:28px; background:#F9FAFB; color:#111827;
+         font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+  .wrap { max-width:1400px; margin:0 auto; }
+  .card { background:#fff; border:1px solid #E5E7EB; border-radius:10px;
+           padding:18px; margin-bottom:20px; overflow-x:auto; }
+  h1 { font-size:20px; margin:0 0 4px; }
+  h2 { font-size:14px; margin:0 0 14px; font-weight:600; color:#4B5563; }
+  .epic { margin:0 0 16px; font-size:13px; }
+  a { color:#1F5FA8; }
+  table { border-collapse:collapse; width:100%; font-size:13px; }
+  th, td { text-align:left; padding:8px 10px; border-bottom:1px solid #F3F4F6;
+            vertical-align:top; }
+  tr.lane th { background:#F3F4F6; font-size:11px; letter-spacing:.06em;
+                text-transform:uppercase; border-bottom:1px solid #E5E7EB; }
+  tr.lane th span { text-transform:none; letter-spacing:0; font-weight:400;
+                     color:#4B5563; }
+  td.num { font-variant-numeric:tabular-nums; white-space:nowrap; }
+  .pill { display:inline-block; padding:1px 8px; border-radius:10px;
+           border:1px solid; font-size:11px; font-weight:600; white-space:nowrap; }
+  ul { margin:0; padding-left:18px; font-size:13px; }
+  footer { font-size:11px; color:#9CA3AF; }
+</style></head>
+<body><div class="wrap">
+  <h1>Checkout Reliability</h1>
+  <h2>Issue #4 · 2026-W29
+      · rendered 15 Jul 2026</h2>
+  <p class="epic">📋 <a href="https://acme.atlassian.net/browse/PAY-1200">PAY-1200 · all checkout reliability work</a></p>
+  <div class="card"><svg xmlns="http://www.w3.org/2000/svg" width="990" height="570" viewBox="0 0 990 570" role="img">
+<defs><pattern id="proj" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" fill="#FFFFFF" fill-opacity="0"/><line x1="0" y1="0" x2="0" y2="7" stroke="#FFFFFF" stroke-width="3.2" stroke-opacity="0.55"/></pattern></defs>
+<rect x="0.0" y="0.0" width="990.0" height="570.0" rx="0" fill="#FFFFFF"/>
+<text x="24.0" y="42.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" font-weight="bold" fill="#111827" text-anchor="start">Checkout Reliability</text>
+<text x="24.0" y="62.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" fill="#4B5563" text-anchor="start">Issue #4 · 2026-W29</text>
+<rect x="555.4" y="130.0" width="254.6" height="352.0" rx="0" fill="#FAFAFA"/>
+<rect x="324.0" y="78.0" width="486.0" height="22.0" rx="0" fill="#F3F4F6"/>
+<text x="405.0" y="93.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#4B5563" text-anchor="middle">June 2026</text>
+<line x1="486.0" y1="78.0" x2="486.0" y2="482.0" stroke="#D1D5DB" stroke-width="1"/>
+<text x="594.0" y="93.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#4B5563" text-anchor="middle">July 2026</text>
+<line x1="702.0" y1="78.0" x2="702.0" y2="482.0" stroke="#D1D5DB" stroke-width="1"/>
+<text x="756.0" y="93.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#4B5563" text-anchor="middle">August 2026</text>
+<text x="351.0" y="113.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#111827" text-anchor="middle">W25</text>
+<text x="351.0" y="125.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="9" font-weight="normal" fill="#9CA3AF" text-anchor="middle">15 Jun</text>
+<line x1="324.0" y1="78.0" x2="324.0" y2="482.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="405.0" y="113.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#111827" text-anchor="middle">W26</text>
+<text x="405.0" y="125.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="9" font-weight="normal" fill="#9CA3AF" text-anchor="middle">22 Jun</text>
+<line x1="378.0" y1="78.0" x2="378.0" y2="482.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="459.0" y="113.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#111827" text-anchor="middle">W27</text>
+<text x="459.0" y="125.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="9" font-weight="normal" fill="#9CA3AF" text-anchor="middle">29 Jun</text>
+<line x1="432.0" y1="78.0" x2="432.0" y2="482.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="513.0" y="113.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#111827" text-anchor="middle">W28</text>
+<text x="513.0" y="125.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="9" font-weight="normal" fill="#9CA3AF" text-anchor="middle">6 Jul</text>
+<line x1="486.0" y1="78.0" x2="486.0" y2="482.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="567.0" y="113.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#111827" text-anchor="middle">W29</text>
+<text x="567.0" y="125.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="9" font-weight="normal" fill="#9CA3AF" text-anchor="middle">13 Jul</text>
+<line x1="540.0" y1="78.0" x2="540.0" y2="482.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="621.0" y="113.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#111827" text-anchor="middle">W30</text>
+<text x="621.0" y="125.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="9" font-weight="normal" fill="#9CA3AF" text-anchor="middle">20 Jul</text>
+<line x1="594.0" y1="78.0" x2="594.0" y2="482.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="675.0" y="113.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#111827" text-anchor="middle">W31</text>
+<text x="675.0" y="125.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="9" font-weight="normal" fill="#9CA3AF" text-anchor="middle">27 Jul</text>
+<line x1="648.0" y1="78.0" x2="648.0" y2="482.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="729.0" y="113.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#111827" text-anchor="middle">W32</text>
+<text x="729.0" y="125.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="9" font-weight="normal" fill="#9CA3AF" text-anchor="middle">3 Aug</text>
+<line x1="702.0" y1="78.0" x2="702.0" y2="482.0" stroke="#E5E7EB" stroke-width="1"/>
+<text x="783.0" y="113.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#111827" text-anchor="middle">W33</text>
+<text x="783.0" y="125.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="9" font-weight="normal" fill="#9CA3AF" text-anchor="middle">10 Aug</text>
+<line x1="756.0" y1="78.0" x2="756.0" y2="482.0" stroke="#E5E7EB" stroke-width="1"/>
+<line x1="810.0" y1="78.0" x2="810.0" y2="482.0" stroke="#E5E7EB" stroke-width="1"/>
+<line x1="324.0" y1="130.0" x2="810.0" y2="130.0" stroke="#D1D5DB" stroke-width="1"/>
+<path d="M 447.4 136.0 L 454.4 143.0 L 447.4 150.0 L 440.4 143.0 Z" fill="#111827"/>
+<line x1="447.4" y1="152.0" x2="447.4" y2="482.0" stroke="#111827" stroke-width="1" stroke-dasharray="2 4"/>
+<text x="447.4" y="165.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="10" font-weight="normal" fill="#111827" text-anchor="middle">Retry freeze · 1 Jul</text>
+<path d="M 678.9 136.0 L 685.9 143.0 L 678.9 150.0 L 671.9 143.0 Z" fill="#111827"/>
+<line x1="678.9" y1="152.0" x2="678.9" y2="482.0" stroke="#111827" stroke-width="1" stroke-dasharray="2 4"/>
+<text x="678.9" y="179.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="10" font-weight="normal" fill="#111827" text-anchor="middle">SLA review · 31 Jul</text>
+<rect x="24.0" y="180.0" width="942.0" height="26.0" rx="4" fill="#F3F4F6"/>
+<text x="34.0" y="198.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#111827" text-anchor="start">RESILIENCE</text>
+<text x="124.0" y="198.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="10" font-weight="normal" fill="#4B5563" text-anchor="start">Make provider retries safe and bounded</text>
+<line x1="24.0" y1="242.0" x2="966.0" y2="242.0" stroke="#F3F4F6" stroke-width="1"/>
+<text x="42.0" y="230.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" fill="#111827" text-anchor="start">Idempotency keys</text>
+<rect x="327.0" y="217.0" width="156.0" height="18.0" rx="5" fill="#D6EFE0" stroke="#1F7A4D" stroke-width="1" opacity="0.9"/>
+<rect x="327.0" y="217.0" width="156.0" height="18.0" rx="5" fill="#1F7A4D"/>
+<text x="336.0" y="230.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF" text-anchor="start">100%</text>
+<text x="824.0" y="230.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#111827" text-anchor="start">100% (6/6)</text>
+<line x1="898.0" y1="233.0" x2="960.0" y2="233.0" stroke="#E5E7EB" stroke-width="1"/>
+<polyline points="898.0,226.0 918.7,219.0 939.3,219.0 960.0,219.0" fill="none" stroke="#1F7A4D" stroke-width="1.6" stroke-linejoin="round"/>
+<circle cx="960.0" cy="219.0" r="2.2" fill="#1F7A4D"/>
+<line x1="24.0" y1="274.0" x2="966.0" y2="274.0" stroke="#F3F4F6" stroke-width="1"/>
+<text x="42.0" y="262.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" fill="#111827" text-anchor="start">Backpressure and timeouts</text>
+<rect x="435.0" y="249.0" width="210.0" height="18.0" rx="5" fill="#D9E7F7" stroke="#1F5FA8" stroke-width="1" opacity="0.9"/>
+<rect x="435.0" y="249.0" width="126.0" height="18.0" rx="5" fill="#1F5FA8"/>
+<rect x="561.0" y="249.0" width="84.0" height="18.0" rx="5" fill="url(#proj)"/>
+<text x="444.0" y="262.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF" text-anchor="start">60%</text>
+<text x="824.0" y="262.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#111827" text-anchor="start">60% (3/5)</text>
+<line x1="898.0" y1="265.0" x2="960.0" y2="265.0" stroke="#E5E7EB" stroke-width="1"/>
+<polyline points="898.0,265.0 918.7,263.6 939.3,260.1 960.0,256.6" fill="none" stroke="#1F5FA8" stroke-width="1.6" stroke-linejoin="round"/>
+<circle cx="960.0" cy="256.6" r="2.2" fill="#1F5FA8"/>
+<rect x="24.0" y="284.0" width="942.0" height="26.0" rx="4" fill="#F3F4F6"/>
+<text x="34.0" y="302.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#111827" text-anchor="start">OBSERVABILITY</text>
+<text x="146.8" y="302.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="10" font-weight="normal" fill="#4B5563" text-anchor="start">See slow burns before customers do</text>
+<line x1="24.0" y1="346.0" x2="966.0" y2="346.0" stroke="#F3F4F6" stroke-width="1"/>
+<text x="42.0" y="334.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" fill="#111827" text-anchor="start">Latency and error dashboard</text>
+<rect x="381.0" y="321.0" width="156.0" height="18.0" rx="5" fill="#D6EFE0" stroke="#1F7A4D" stroke-width="1" opacity="0.9"/>
+<rect x="381.0" y="321.0" width="156.0" height="18.0" rx="5" fill="#1F7A4D"/>
+<text x="390.0" y="334.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF" text-anchor="start">100%</text>
+<text x="824.0" y="334.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#111827" text-anchor="start">100% (4/4)</text>
+<line x1="898.0" y1="337.0" x2="960.0" y2="337.0" stroke="#E5E7EB" stroke-width="1"/>
+<polyline points="898.0,332.8 918.7,327.2 939.3,323.0 960.0,323.0" fill="none" stroke="#1F7A4D" stroke-width="1.6" stroke-linejoin="round"/>
+<circle cx="960.0" cy="323.0" r="2.2" fill="#1F7A4D"/>
+<line x1="24.0" y1="378.0" x2="966.0" y2="378.0" stroke="#F3F4F6" stroke-width="1"/>
+<text x="42.0" y="366.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" fill="#111827" text-anchor="start">Burn-rate alerting</text>
+<rect x="489.0" y="353.0" width="210.0" height="18.0" rx="5" fill="#FBECD5" stroke="#B45309" stroke-width="1" opacity="0.9"/>
+<rect x="489.0" y="353.0" width="52.5" height="18.0" rx="5" fill="#B45309"/>
+<rect x="555.4" y="353.0" width="143.6" height="18.0" rx="5" fill="url(#proj)"/>
+<text x="498.0" y="366.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF" text-anchor="start">25%</text>
+<text x="824.0" y="366.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#111827" text-anchor="start">25% (1/4)</text>
+<line x1="898.0" y1="369.0" x2="960.0" y2="369.0" stroke="#E5E7EB" stroke-width="1"/>
+<polyline points="898.0,369.0 918.7,369.0 939.3,367.6 960.0,365.5" fill="none" stroke="#B45309" stroke-width="1.6" stroke-linejoin="round"/>
+<circle cx="960.0" cy="365.5" r="2.2" fill="#B45309"/>
+<rect x="24.0" y="388.0" width="942.0" height="26.0" rx="4" fill="#F3F4F6"/>
+<text x="34.0" y="406.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#111827" text-anchor="start">ROLLOUT</text>
+<line x1="24.0" y1="450.0" x2="966.0" y2="450.0" stroke="#F3F4F6" stroke-width="1"/>
+<text x="42.0" y="438.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" fill="#111827" text-anchor="start">Canary to 5% of traffic</text>
+<rect x="597.0" y="425.0" width="102.0" height="18.0" rx="5" fill="#E7E9ED" stroke="#6B7280" stroke-width="1" opacity="0.9"/>
+<rect x="597.0" y="425.0" width="102.0" height="18.0" rx="5" fill="url(#proj)"/>
+<text x="690.0" y="438.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#6B7280" text-anchor="end">0%</text>
+<text x="824.0" y="438.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#111827" text-anchor="start">0%</text>
+<line x1="898.0" y1="441.0" x2="960.0" y2="441.0" stroke="#E5E7EB" stroke-width="1"/>
+<polyline points="898.0,441.0 918.7,441.0 939.3,441.0 960.0,441.0" fill="none" stroke="#6B7280" stroke-width="1.6" stroke-linejoin="round"/>
+<circle cx="960.0" cy="441.0" r="2.2" fill="#6B7280"/>
+<line x1="24.0" y1="482.0" x2="966.0" y2="482.0" stroke="#F3F4F6" stroke-width="1"/>
+<text x="42.0" y="470.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="normal" fill="#111827" text-anchor="start">Full rollout and SLA check</text>
+<rect x="705.0" y="457.0" width="102.0" height="18.0" rx="5" fill="#E7E9ED" stroke="#6B7280" stroke-width="1" opacity="0.9"/>
+<rect x="705.0" y="457.0" width="102.0" height="18.0" rx="5" fill="url(#proj)"/>
+<text x="798.0" y="470.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#6B7280" text-anchor="end">0%</text>
+<text x="824.0" y="470.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#111827" text-anchor="start">0%</text>
+<line x1="898.0" y1="473.0" x2="960.0" y2="473.0" stroke="#E5E7EB" stroke-width="1"/>
+<polyline points="898.0,473.0 918.7,473.0 939.3,473.0 960.0,473.0" fill="none" stroke="#6B7280" stroke-width="1.6" stroke-linejoin="round"/>
+<circle cx="960.0" cy="473.0" r="2.2" fill="#6B7280"/>
+<line x1="555.4" y1="72.0" x2="555.4" y2="482.0" stroke="#DC2626" stroke-width="2"/>
+<rect x="529.4" y="57.0" width="52.0" height="16.0" rx="8" fill="#DC2626"/>
+<text x="555.4" y="69.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF" text-anchor="middle">today</text>
+<rect x="24.0" y="499.0" width="22.0" height="12.0" rx="3" fill="#D6EFE0" stroke="#1F7A4D" stroke-width="1"/>
+<rect x="24.0" y="499.0" width="13.0" height="12.0" rx="3" fill="#1F7A4D"/>
+<text x="52.0" y="509.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" fill="#4B5563" text-anchor="start">Done</text>
+<rect x="84.4" y="499.0" width="22.0" height="12.0" rx="3" fill="#D9E7F7" stroke="#1F5FA8" stroke-width="1"/>
+<rect x="84.4" y="499.0" width="13.0" height="12.0" rx="3" fill="#1F5FA8"/>
+<text x="112.4" y="509.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" fill="#4B5563" text-anchor="start">In progress</text>
+<rect x="191.0" y="499.0" width="22.0" height="12.0" rx="3" fill="#E7E9ED" stroke="#6B7280" stroke-width="1"/>
+<rect x="191.0" y="499.0" width="13.0" height="12.0" rx="3" fill="#6B7280"/>
+<text x="219.0" y="509.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" fill="#4B5563" text-anchor="start">Planned</text>
+<rect x="271.2" y="499.0" width="22.0" height="12.0" rx="3" fill="#FBECD5" stroke="#B45309" stroke-width="1"/>
+<rect x="271.2" y="499.0" width="13.0" height="12.0" rx="3" fill="#B45309"/>
+<text x="299.2" y="509.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" fill="#4B5563" text-anchor="start">At risk</text>
+<rect x="351.4" y="499.0" width="22.0" height="12.0" rx="3" fill="#E9E2FB" stroke="#6D28D9" stroke-width="1"/>
+<rect x="351.4" y="499.0" width="13.0" height="12.0" rx="3" fill="#6D28D9"/>
+<text x="379.4" y="509.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" fill="#4B5563" text-anchor="start">Paused</text>
+<rect x="425.0" y="499.0" width="22.0" height="12.0" rx="3" fill="#9CA3AF"/>
+<rect x="425.0" y="499.0" width="22.0" height="12.0" rx="3" fill="url(#proj)"/>
+<text x="453.0" y="509.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" fill="#4B5563" text-anchor="start">projected</text>
+<line x1="524.4" y1="498.0" x2="524.4" y2="511.0" stroke="#DC2626" stroke-width="2"/>
+<text x="532.4" y="509.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" fill="#4B5563" text-anchor="start">today</text>
+<text x="24.0" y="530.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="10" font-weight="normal" fill="#9CA3AF" text-anchor="start">Bar spans the weeks the work package is scheduled for. Fill is completion. Hatched is not yet done. Sparkline is completion per snapshot.</text>
+</svg></div>
+  <div class="card"><table>
+    <tr><th>Work package</th><th>Status</th><th>Window</th><th>Now</th>
+        <th>Projection</th><th>Note</th></tr>
+    <tr class="lane"><th colspan="6">Resilience <span>Make provider retries safe and bounded</span></th></tr><tr><td>Idempotency keys</td><td><span class="pill" style="background:#D6EFE0;color:#1F7A4D;border-color:#1F7A4D">Done</span></td><td>W25–W27 (15 Jun – 5 Jul)</td><td class="num">100% (6/6)</td><td>Shipped 3 Jul, confirmed in production 6 Jul</td><td>Retries no longer double-charge; ADR-0001 accepted.</td></tr><tr><td>Backpressure and timeouts</td><td><span class="pill" style="background:#D9E7F7;color:#1F5FA8;border-color:#1F5FA8">In progress</span></td><td>W27–W30 (29 Jun – 26 Jul)</td><td class="num">60% (3/5)</td><td>End of July, gated on the provider rate-limit test</td><td>Client-side limits merged; load test scheduled.</td></tr><tr class="lane"><th colspan="6">Observability <span>See slow burns before customers do</span></th></tr><tr><td>Latency and error dashboard</td><td><span class="pill" style="background:#D6EFE0;color:#1F7A4D;border-color:#1F7A4D">Done</span></td><td>W26–W28 (22 Jun – 12 Jul)</td><td class="num">100% (4/4)</td><td>Live since 10 Jul</td><td>P99 and error rate per provider at 1-minute resolution.</td></tr><tr><td>Burn-rate alerting</td><td><span class="pill" style="background:#FBECD5;color:#B45309;border-color:#B45309">At risk</span></td><td>W28–W31 (6 Jul – 2 Aug)</td><td class="num">25% (1/4)</td><td>Early August if on-call rota is agreed this week</td><td>Blocked on the paging policy decision.</td></tr><tr class="lane"><th colspan="6">Rollout</th></tr><tr><td>Canary to 5% of traffic</td><td><span class="pill" style="background:#E7E9ED;color:#6B7280;border-color:#6B7280">Planned</span></td><td>W30–W31 (20 Jul – 2 Aug)</td><td class="num">0%</td><td>Week of 20 Jul, after load test passes</td><td></td></tr><tr><td>Full rollout and SLA check</td><td><span class="pill" style="background:#E7E9ED;color:#6B7280;border-color:#6B7280">Planned</span></td><td>W32–W33 (3 Aug – 16 Aug)</td><td class="num">0%</td><td>not scheduled</td><td></td></tr>
+  </table></div>
+  <div class="card"><h2>Milestones</h2><ul><li><b>Retry freeze</b> · 1 Jul 2026</li><li><b>SLA review</b> · 31 Jul 2026</li></ul></div>
+  <footer>Generated by _tools/roadmap_render.py</footer>
+</div></body></html>

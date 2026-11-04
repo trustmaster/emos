@@ -8,6 +8,8 @@ team: "{{team}}"
 start_date: YYYY-MM-DD
 contract: permanent
 status: active
+pronouns: ""            # e.g. she/her, he/him, they/them — use these in every
+                        # document that refers to this person; leave blank if unknown
 relation: report        # report | manager | peer | stakeholder | skip
                         # your relationship to this person (from the owner's POV)
 manager: "{{owner_slug}}"   # who they report to; keep for relation: report, else clear
